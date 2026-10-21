@@ -1,0 +1,106 @@
+OnRoute: Team Execution Brief
+
+Team Teen Bahadur | Devmarketplace x NED AI Hackathon | Final day: 22 Oct 2026
+
+Read this fully (3 minutes). It replaces the old context file. Goal: a working demo that is honest, polished and easy to understand.
+
+1. What we are building
+
+OnRoute helps NED students recover when their usual university shuttle ("point") plan fails.
+
+It combines verified route data, recent student reports, and available travel estimates to compare realistic next steps: wait, board at a later stop, try another point, or use public transport / Bykea / inDrive.
+
+Our edge: most "bus apps" fake live ETAs. OnRoute is honest about what it knows and what it doesn't. Judges will notice.
+
+2. The 3 scenarios (everything we build serves these)
+Point not coming today. Suggest other routes or transport options.
+Point already left my stop. Can I catch it at a later stop? (This is our hero demo.)
+Point is delayed. Should I wait or switch?
+3. The one rule we never break
+
+Every piece of info on screen must carry a label:
+
+Label	Meaning
+Scheduled	From the verified shuttle document
+Reported	A student report, with timestamp
+Estimated	Calculated, with assumptions shown
+Unknown	Not enough data. Say so.
+Stale	Report too old to trust
+Conflicting	Recent reports disagree
+
+Never show:
+
+A live countdown to a real bus arrival (we have no live tracking).
+"Cancelled" just because one student didn't see the bus.
+Invented stops, times, fares or road closures.
+Fake/demo data without a "DEMO DATA" label.
+
+No reports = Unknown, not "all fine." The app must still be useful with zero reports.
+
+4. Scope: what we build
+
+Layer 1: Must work (the core)
+
+Phone-friendly web app
+Route/stop data from the shuttle PDF (1-2 routes, hand-verified)
+Deterministic logic (plain code, NOT the AI) that compares options
+The three scenarios, with the labels above
+
+Layer 2: Build if the AI builder makes it easy
+
+Login/signup (2FA only if the platform gives it cheaply)
+One-tap reports: bus seen / departed / not seen / disruption (auto timestamp, freshness shown)
+AI assistant that explains the computed options in plain language (must have a non-AI fallback)
+Bykea/inDrive: student types the quote, app compares it
+Map view
+
+Layer 3: Pitch as roadmap, do NOT build
+
+Live bus tracking, learned ETAs, road-closure feeds, rewards, native app, other universities
+5. Owners (combine if we are fewer people)
+Role	Job
+Data owner	Extract 1-2 routes from the PDF into a table (stop names, order, times). Verify by hand. This is the bottleneck. Start now.
+Logic owner	Decision logic + test against 3 hand-worked examples
+Builder(s)	Prompt the AI builder for screens: journey form, results, report button, login
+Demo/docs owner	README, final spec, demo script, backup video
+
+Rule: one owner per area. Don't all edit the same thing.
+
+6. Timeline (fill in the real deadline: ______)
+Now: Data owner starts the route table. Builders create screens with clearly labelled DEMO data. Don't wait for the real data.
+Then sleep. Tired vibe-coding creates bugs nobody notices.
+Morning: Real data goes in. Logic wired to scenario 2 first, then 1 and 3. Add report button + labels.
+Deadline minus 5h: AI explanation (grounded in computed results), Bykea/inDrive quote entry.
+Deadline minus 4h: HARD FREEZE. No new features after this.
+Last 4h: Test, fix bugs, README, final spec, rehearse demo twice, record a backup video.
+7. Rules for using the AI builder
+Give it the real route table. Never let it invent stops or times.
+Tell it: "Calculations must be done in code, the LLM only explains results."
+Tell it: "Every result shows a label: scheduled / reported / estimated / unknown."
+Test what it builds. Looking finished is not the same as being correct.
+If something is not working by the freeze, cut it. Don't half-ship.
+8. Must-test before demo
+ Zero reports
+ One fresh report
+ One stale report
+ Two conflicting reports
+ AI turned off (results screen still works)
+ Works on a phone-sized screen
+ The 3 scenarios give sensible answers vs. the hand-worked examples
+9. Demo script (aim for under 5 minutes)
+Open on a phone-sized view. Pick a stop + destination.
+Show the normal scheduled route info.
+Trigger "point already left my stop."
+Show the "board at a later stop" option with its labels and assumptions.
+Submit a report. Show its timestamp and status.
+Show the zero-report state: the app says "unknown," not a fake time.
+Show the AI explanation.
+Close with the roadmap slide (live tracking, learned ETAs, native app).
+
+Judging: Problem & impact 30% | Scope & buildability 30% | Spec quality 25% | Team readiness 15%.
+
+10. Product statement (use in README and pitch)
+
+OnRoute helps NED students recover when their usual university shuttle plan fails. It combines verified route information, recent student observations, and available travel estimates to compare realistic next steps. It does not claim live bus tracking or certainty where the data does not support it.
+
+Guiding rule: a small reliable flow that works beats many features that don't.
