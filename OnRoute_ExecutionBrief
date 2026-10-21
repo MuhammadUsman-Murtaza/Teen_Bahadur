@@ -1,106 +1,144 @@
-OnRoute: Team Execution Brief
+# OnRoute: Team Execution Brief (v2)
+**Team Teen Bahadur | Devmarketplace x NED AI Hackathon | Final day: 22 Oct 2026**
 
-Team Teen Bahadur | Devmarketplace x NED AI Hackathon | Final day: 22 Oct 2026
+> Read this fully (3 minutes). It replaces the old context file. Goal: a working demo that is honest, polished and easy to understand.
 
-Read this fully (3 minutes). It replaces the old context file. Goal: a working demo that is honest, polished and easy to understand.
+---
 
-1. What we are building
+## 1. What we are building
 
-OnRoute helps NED students recover when their usual university shuttle ("point") plan fails.
+**OnRoute helps NED students recover when their usual university shuttle ("point") plan fails.**
 
-It combines verified route data, recent student reports, and available travel estimates to compare realistic next steps: wait, board at a later stop, try another point, or use public transport / Bykea / inDrive.
+A student signs up with their point number and usual stop. When their point fails, OnRoute compares realistic next steps: wait, board at a later stop, hop on a nearby point, or use public bus / Bykea / inDrive, by fastest, cheapest or balanced.
 
-Our edge: most "bus apps" fake live ETAs. OnRoute is honest about what it knows and what it doesn't. Judges will notice.
+**Our edge:** most "bus apps" fake live ETAs. OnRoute uses reports from students further up the same point's route, and is honest about what it knows and what it doesn't. Judges will notice.
 
-2. The 3 scenarios (everything we build serves these)
-Point not coming today. Suggest other routes or transport options.
-Point already left my stop. Can I catch it at a later stop? (This is our hero demo.)
-Point is delayed. Should I wait or switch?
-3. The one rule we never break
+## 2. The 3 scenarios (everything we build serves these)
 
-Every piece of info on screen must carry a label:
+1. **Point not coming today.** Suggest nearby points or other transport options.
+2. **Point already left my stop.** Can I catch it at a later stop, or switch? (Hero demo.)
+3. **Point is delayed.** Should I wait or switch? Show an estimated arrival range only when evidence supports it.
 
-Label	Meaning
-Scheduled	From the verified shuttle document
-Reported	A student report, with timestamp
-Estimated	Calculated, with assumptions shown
-Unknown	Not enough data. Say so.
-Stale	Report too old to trust
-Conflicting	Recent reports disagree
+## 3. Core report logic (our signature idea)
+
+Student's stop = **stop n**. Students on the **same point at stops 1 to n-1** are "upstream." Their reports are the best evidence we have for the student at stop n.
+
+Example: an upstream student reports "point departed stop 3 at 7:40." The app uses the route table's stop-to-stop timing to show: **"Estimated arrival at your stop: 7:52 to 8:00, based on a report from 7:40."**
+
+Report types: **seen / departed / not seen / disruption.** Timestamp is automatic. "Seen at stop" is NOT the same as "departed." Reports show age, and old ones go Stale.
+
+## 4. The one rule we never break
+
+Every piece of info on screen carries a label:
+
+| Label | Meaning |
+|---|---|
+| **Scheduled** | From the verified shuttle document |
+| **Reported** | A student report, with timestamp and stop |
+| **Estimated** | Calculated, with assumptions shown (e.g. range from a fresh upstream report) |
+| **Unknown** | Not enough data. Say so. |
+| **Stale** | Report too old to trust |
+| **Conflicting** | Recent reports disagree |
+
+**ETA rule:**
+- Fresh upstream report exists: show an **estimated range**, labelled with the report it's based on.
+- No fresh report: show **Scheduled time** and **"Live arrival unknown."**
+- Never show a precise live countdown to the bus. A countdown to the *scheduled* time is OK if labelled "scheduled."
 
 Never show:
+- "Cancelled" just because one student didn't see the bus.
+- Invented stops, times, fares or road closures.
+- Fake/demo data without a "DEMO DATA" label.
 
-A live countdown to a real bus arrival (we have no live tracking).
-"Cancelled" just because one student didn't see the bus.
-Invented stops, times, fares or road closures.
-Fake/demo data without a "DEMO DATA" label.
+**No reports = Unknown, not "all fine."** The app must still be useful with zero reports.
 
-No reports = Unknown, not "all fine." The app must still be useful with zero reports.
+## 5. Inputs
 
-4. Scope: what we build
+**At signup (saved):** name/login, **usual point number, usual boarding stop**, destination (NED).
 
-Layer 1: Must work (the core)
+**Per journey (can differ from usual):** boarding stop today, **arrival deadline**, **preference: fastest / cheapest / balanced**, willing to walk or transfer (yes/no).
 
-Phone-friendly web app
-Route/stop data from the shuttle PDF (1-2 routes, hand-verified)
-Deterministic logic (plain code, NOT the AI) that compares options
-The three scenarios, with the labels above
+Usual stop and today's stop are separate. A student may need to board somewhere else during a disruption.
 
-Layer 2: Build if the AI builder makes it easy
+## 6. Scope: what we build
 
-Login/signup (2FA only if the platform gives it cheaply)
-One-tap reports: bus seen / departed / not seen / disruption (auto timestamp, freshness shown)
-AI assistant that explains the computed options in plain language (must have a non-AI fallback)
-Bykea/inDrive: student types the quote, app compares it
-Map view
+**Layer 1: Must work (the core)**
+- Phone-friendly web app
+- Signup with point number + usual stop
+- Route/stop data from the shuttle PDF (1-2 routes, hand-verified, with stop order and stop-to-stop timing)
+- Deterministic logic (plain code, NOT the AI) that compares options by the chosen preference and deadline
+- The three scenarios with the labels above
+- Upstream report logic from section 3
 
-Layer 3: Pitch as roadmap, do NOT build
+**Layer 2: Build if the AI builder makes it easy**
+- One-tap report button, freshness display
+- AI assistant explaining computed options in plain language (must have a non-AI fallback)
+- Public bus fare table (small, hand-made for our routes, labelled "Estimated" if unsure)
+- Bykea/inDrive: student types the quote, app compares it; optional rough fare estimate labelled "Estimated"
+- Login security / 2FA only if the platform gives it cheaply
+- Map view
 
-Live bus tracking, learned ETAs, road-closure feeds, rewards, native app, other universities
-5. Owners (combine if we are fewer people)
-Role	Job
-Data owner	Extract 1-2 routes from the PDF into a table (stop names, order, times). Verify by hand. This is the bottleneck. Start now.
-Logic owner	Decision logic + test against 3 hand-worked examples
-Builder(s)	Prompt the AI builder for screens: journey form, results, report button, login
-Demo/docs owner	README, final spec, demo script, backup video
+**Layer 3: Pitch as roadmap, do NOT build**
+- Live GPS tracking, learned ETAs from history, road-closure feeds, rewards, native app, other universities
 
-Rule: one owner per area. Don't all edit the same thing.
+## 7. Owners (combine if we are fewer people)
 
-6. Timeline (fill in the real deadline: ______)
-Now: Data owner starts the route table. Builders create screens with clearly labelled DEMO data. Don't wait for the real data.
-Then sleep. Tired vibe-coding creates bugs nobody notices.
-Morning: Real data goes in. Logic wired to scenario 2 first, then 1 and 3. Add report button + labels.
-Deadline minus 5h: AI explanation (grounded in computed results), Bykea/inDrive quote entry.
-Deadline minus 4h: HARD FREEZE. No new features after this.
-Last 4h: Test, fix bugs, README, final spec, rehearse demo twice, record a backup video.
-7. Rules for using the AI builder
-Give it the real route table. Never let it invent stops or times.
-Tell it: "Calculations must be done in code, the LLM only explains results."
-Tell it: "Every result shows a label: scheduled / reported / estimated / unknown."
-Test what it builds. Looking finished is not the same as being correct.
-If something is not working by the freeze, cut it. Don't half-ship.
-8. Must-test before demo
- Zero reports
- One fresh report
- One stale report
- Two conflicting reports
- AI turned off (results screen still works)
- Works on a phone-sized screen
- The 3 scenarios give sensible answers vs. the hand-worked examples
-9. Demo script (aim for under 5 minutes)
-Open on a phone-sized view. Pick a stop + destination.
-Show the normal scheduled route info.
-Trigger "point already left my stop."
-Show the "board at a later stop" option with its labels and assumptions.
-Submit a report. Show its timestamp and status.
-Show the zero-report state: the app says "unknown," not a fake time.
-Show the AI explanation.
-Close with the roadmap slide (live tracking, learned ETAs, native app).
+| Role | Job |
+|---|---|
+| **Data owner** | Extract 1-2 routes from the PDF: stop names, order, times, stop-to-stop timing, plus the fare table. Verify by hand. **Bottleneck. Start now.** |
+| **Logic owner** | Option comparison + upstream ETA logic, tested on 3 hand-worked examples |
+| **Builder(s)** | Prompt the AI builder: signup, journey form, results, report button |
+| **Demo/docs owner** | README, final spec, demo script, backup video |
+
+Names: Data ______ | Logic ______ | Builders ______ | Demo/docs ______
+
+One owner per area. Don't all edit the same thing.
+
+## 8. Timeline (real deadline: ______)
+
+- **Now:** Data owner starts the route table. Builders create screens with clearly labelled DEMO data. Don't wait for real data.
+- **Then sleep.** Tired vibe-coding creates bugs nobody notices.
+- **Morning:** Real data goes in. Scenario 2 first, then 1 and 3. Add report button, upstream ETA range, labels.
+- **Deadline minus 5h:** AI explanation (grounded in computed results), fares, Bykea/inDrive quote entry.
+- **Deadline minus 4h: HARD FREEZE.** No new features after this.
+- **Last 4h:** Test, fix bugs, README, final spec, rehearse demo twice, record a backup video.
+
+## 9. Rules for using the AI builder
+
+- Give it the real route table. Never let it invent stops or times.
+- Tell it: "Calculations are done in code. The LLM only explains results."
+- Tell it: "Every result shows a label: scheduled / reported / estimated / unknown."
+- Tell it: "ETA ranges only from fresh upstream reports; otherwise show scheduled and unknown."
+- Test what it builds. Looking finished is not the same as being correct.
+- If something doesn't work by the freeze, cut it. Don't half-ship.
+
+## 10. Must-test before demo
+
+- [ ] Zero reports
+- [ ] One fresh upstream report gives an ETA range
+- [ ] One stale report is marked stale
+- [ ] Two conflicting reports show the conflict
+- [ ] Report from a stop AFTER the student's stop is ignored for their ETA
+- [ ] Fastest vs cheapest changes the ranking
+- [ ] Deadline too tight shows a warning
+- [ ] AI turned off: results screen still works
+- [ ] Works on a phone-sized screen
+- [ ] Scenarios match the hand-worked examples
+
+## 11. Demo script (under 5 minutes)
+
+1. Phone-sized view. Show signup with point + stop saved.
+2. Show normal scheduled route info.
+3. Zero-report state: "Live arrival unknown," not a fake time.
+4. Submit an upstream report ("departed stop 3 at 7:40"). The ETA range appears with its source.
+5. Trigger **"point already left my stop."** Show "board at a later stop" and alternatives, ranked by fastest/cheapest.
+6. Show the AI explanation.
+7. Close with the roadmap slide (live tracking, learned ETAs, native app).
 
 Judging: Problem & impact 30% | Scope & buildability 30% | Spec quality 25% | Team readiness 15%.
 
-10. Product statement (use in README and pitch)
+## 12. Product statement (README and pitch)
 
-OnRoute helps NED students recover when their usual university shuttle plan fails. It combines verified route information, recent student observations, and available travel estimates to compare realistic next steps. It does not claim live bus tracking or certainty where the data does not support it.
+> OnRoute helps NED students recover when their usual university shuttle plan fails. It combines verified route information, recent reports from students upstream on the same route, and available travel estimates to compare realistic next steps by time and cost. It shows estimates only when evidence supports them, and says "unknown" when it doesn't.
 
-Guiding rule: a small reliable flow that works beats many features that don't.
+**Guiding rule: a small reliable flow that works beats many features that don't.**
