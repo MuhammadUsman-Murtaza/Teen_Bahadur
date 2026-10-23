@@ -1,364 +1,376 @@
-OnRoute: AI Commute Decision Assistant — MVP Specification
-Status: Updated draft for the 19–22 October 2026 hackathon
-Direction: Student-first and NED-first. The MVP does not depend on NED administration or official transport-system integration.
-Core idea: Help a student compare realistic ways to reach their destination using the shuttle timetable, known route connections, available journey estimates, and sparse student observations. AI explains the trade-offs; it does not invent live bus locations or guaranteed arrival times.
+# OnRoute: MVP Specification
 
-Table of Contents
-1. Problem and impact
-2. Product principles and boundaries
-3. Primary user journey
-4. MVP feature scope
-5. AI and decision engine
-6. Working with sparse and uncertain data
-7. Data model
-8. Technical approach and integrations
-9. Team readiness and roles
-10. Three-day execution plan
-11. Acceptance criteria
-12. Risks and validation
-13. Implementation tasks / code gigs
-14. Repository and submission checklist
-15. Future direction
-1. Problem and impact
-The problem
-A NED student who depends on a university pickup bus may reach their stop and find that the bus has not arrived. They may not know whether it is late, has already passed, has broken down, or is not coming. They then have to choose between waiting, walking to another pickup point, taking public transport, or paying for a ride-hailing service—often without enough information to compare those choices.
+> **Status:** Draft for the 19-22 October 2026 hackathon
+>
+> **Direction:** Student-first and NED-first. It doesn't depend on the university's cooperation.
+>
+> **Core idea:** OnRoute shows what students have actually reported, how recent that information is, and how much confidence it supports. We're not pretending to have live GPS or guaranteed arrival times.
 
-The core problem is commute uncertainty and decision-making, not simply late buses. A reporting-only platform can be empty if few students contribute. OnRoute should therefore remain useful when there are zero reports, while treating reports as extra evidence when they exist.
-Primary user
-A NED student who needs to reach a destination by a particular time and wants to compare the practical options available from their current or selected pickup point.
-Proposed solution
-OnRoute is an AI-assisted commute decision tool. It uses the shuttle route and timetable information supplied to the project, known stop connections, available travel estimates, and timestamped student observations to compare a small number of feasible options. It explains why an option may be preferable, what assumptions it relies on, and what remains unknown.
+## Table of Contents
 
-Examples of possible options include:
-- Waiting for the scheduled university shuttle.
-- Walking to another known pickup point and catching a shuttle there, if the route and timing support that connection.
-- Using a known public-transport route where enough reliable information is available.
-- Comparing a student-entered Bykea or inDrive quote with other options.
-The app will not claim to know live service status or retrieve live ride-hailing fares unless a real, authorized integration is available and tested.
-Impact hypotheses
-We want to test whether:
-- Students can understand their available options faster than by searching multiple chats or asking around.
-- Students find the recommendation and its explanation useful, even when there are few or no reports.
-- Showing data sources, timestamps, and uncertainty helps students avoid treating guesses as facts.
-- The route PDF can be converted into sufficiently accurate structured route data for a useful pilot.
-These are hypotheses, not proven outcomes. We will not claim that OnRoute reduces travel time, guarantees on-time arrival, improves shuttle reliability, or saves money without evidence.
-2. Product principles and boundaries
-- Student-first: The app must work without NED administration or an official transport feed.
-- Decision support, not certainty: Recommend a feasible option only to the extent supported by available data; show unknowns clearly.
-- Timetable is not live tracking: A scheduled time does not prove that a bus has arrived, departed, or is on time.
-- AI does not make up transport facts: Route feasibility, times, and costs must come from structured data, a tested external source, or explicit user input.
-- Useful with sparse reports: Reports improve the evidence available but are not a prerequisite for the basic comparison.
-- No invented alternatives: Only recommend routes or transfers represented in verified or explicitly labelled data.
-- Transparent estimates: Distinguish official/published schedule data, external estimates, student reports, user-entered quotes, and demo-only simulated data.
-- Privacy by default: Do not publish a student's precise location or expose personal travel history. Send no unnecessary identifying details to the LLM.
-- Hackathon scope first: Build one complete, trustworthy commute comparison before adding more routes, providers, or complex AI features.
-3. Primary user journey
-1. The student opens OnRoute and selects a starting point and destination. The first demo may use a small set of stops and destinations derived from the supplied shuttle PDF.
-2. They enter the time they need to arrive by, and optionally their budget and willingness to walk or transfer.
-3. The app loads the relevant shuttle routes and schedule entries that have been extracted and checked from the PDF.
-4. If configured and working, the app obtains route or traffic estimates from a real maps service. If not, it clearly marks those estimates as unavailable instead of pretending to have live traffic data.
-5. The app shows recent reports for relevant stops, if any. Each report has a timestamp and a status such as unconfirmed, corroborated, conflicting, or stale.
-6. A deterministic route engine generates a small set of feasible options from the available route graph and inputs. It does not use the LLM to invent stops or calculate authoritative travel times.
-7. The options are compared on estimated arrival time, transfers, walking burden, and cost where those values are known. Missing values are marked unknown.
-8. The AI explanation describes the strongest available option, its trade-offs, the evidence behind it, and what the student should verify before acting.
-9. The student can submit a short observation such as Bus seen, Bus not seen by expected time, or Possible disruption. The report is stored with a server timestamp and the selected stop.
-10. The recommendation can update when a new report or input changes the evidence. The app must not claim that one report proves a bus is delayed or cancelled.
-4. MVP feature scope
-Must have
-- A responsive, phone-first web application.
-- A small, explicit route dataset extracted from the supplied shuttle PDF, with a source note and a manual verification pass.
-- Starting point, destination, arrival deadline, and optional budget/walking preference inputs.
-- A route/stop graph for the selected shuttle routes.
-- A deterministic comparison of a small set of options supported by the seeded data.
-- Clear source and confidence labels for schedules, external estimates, and student reports.
-- A basic report form with timestamped observations.
-- A results screen that explains what is known, what is estimated, and what is unknown.
-- A small demo dataset and a deployed application.
-- A README documenting setup, data provenance, assumptions, limitations, and the demo flow.
-- Basic input validation and safe handling of API keys.
-If time allows
-- A tested traffic-aware route estimate from one maps API.
-- A small set of public-transport connections, but only if routes and stops can be verified in time.
-- A manual field for the user to enter a current Bykea/inDrive fare or pickup estimate.
-- A simple report feed for each pickup point.
-- An LLM-generated explanation grounded in the route engine's structured comparison.
-- A small moderator control for hiding abusive reports.
-- A visual map for the routes we have actually modelled.
-Explicitly out of scope
-- Live GPS tracking of university buses.
-- Guaranteed bus ETAs or claims that a shuttle is on time based only on its schedule.
-- Automatic access to Bykea or inDrive prices, drivers, or booking systems without a working authorized integration.
-- Full coverage of all Karachi public transport.
-- Guaranteed traffic-blockage detection or road-closure alerts unless a working source provides them.
-- Automatically recommending a nearby shuttle stop unless the route connection and walking link are represented in the data.
-- Native Android/iOS applications.
-- Rewards, wallets, payments, sponsor marketplace, or multi-campus onboarding.
-- Training a custom machine-learning model or claiming predictive accuracy from a handful of reports.
-- Complex agents, RAG pipelines, or multi-model orchestration.
-Fallback rule: If external APIs or route data are unavailable, the app must still demonstrate a smaller comparison using the verified shuttle dataset and explicitly labelled assumptions. Do not replace missing live data with fabricated live results.
-5. AI and decision engine
-Design
-OnRoute should have two distinct parts:
-1. Deterministic route and comparison engine: Finds options that are supported by the route graph and computes comparisons from available structured values.
-2. LLM explanation layer: Turns those results into a concise explanation that a student can understand.
-The LLM is not the source of truth for the route network, schedule, travel-time calculations, fares, or service status.
-Inputs to the decision engine
-- Selected origin and destination.
-- Arrival deadline.
-- Optional budget and walking/transfer preferences.
-- Verified shuttle stops, route order, and scheduled times extracted from the PDF.
-- Validated walking or transfer links, if modelled.
-- External route-duration/traffic estimates, only if a working provider is configured.
-- Student reports with timestamps and evidence labels.
-- User-entered quotes or travel estimates, clearly labelled as user-provided.
-Comparison dimensions
-For each option, show the fields that can actually be supported:
-- Estimated journey duration or arrival time.
-- Whether the option appears to meet the arrival deadline.
-- Known fare or user-entered cost, if available.
-- Number of transfers.
-- Walking distance/time, if known.
-- Evidence quality and important unknowns.
-Do not create a fake numerical score that appears scientifically calibrated. If a simple ranking formula is used, document its inputs and keep the raw comparison visible.
-AI explanation
-The backend sends the LLM a compact, structured bundle containing candidate options, their known values, sources, timestamps, and missing fields. The model returns a short explanation that:
-- Identifies the best-supported option or says that the evidence is insufficient to choose.
-- Explains the main trade-off, such as lower cost versus less predictable arrival.
-- Separates facts from estimates and user reports.
-- Does not invent routes, road closures, fares, bus positions, or ETAs.
-- Advises the student to verify time-sensitive details when necessary.
-Example:
-Option to consider: The shuttle is the lower-cost option, but its actual arrival is unverified. A mapped road journey appears to fit your deadline based on the current estimate, although its fare and pickup availability have not been verified in OnRoute. Compare the live quote before deciding.
+1. [Problem and impact](#1-problem-and-impact)
+2. [Principles and boundaries](#2-principles-and-boundaries)
+3. [A concrete user journey](#3-a-concrete-user-journey)
+4. [MVP feature list](#4-mvp-feature-list)
+5. [AI feature: evidence-grounded incident summary](#5-ai-feature-evidence-grounded-incident-summary)
+6. [Confidence and freshness rules](#6-confidence-and-freshness-rules)
+7. [Data model](#7-data-model)
+8. [Technical approach](#8-technical-approach)
+9. [Team readiness and roles](#9-team-readiness-and-roles)
+10. [Three-day execution plan](#10-three-day-execution-plan-19-22-october)
+11. [Acceptance criteria](#11-acceptance-criteria)
+12. [Risks and validation](#12-risks-and-validation)
+13. [Two code gigs / implementation tasks](#13-two-code-gigs--implementation-tasks)
+14. [Repository and submission checklist](#14-repository-and-submission-checklist)
+15. [Future direction](#15-future-direction-not-part-of-the-mvp)
 
-This is an illustrative example, not a claim that those data sources are already connected.
-AI failure behaviour
-- If the LLM fails, show the structured comparison without the explanation.
-- If a maps API fails, mark its estimate unavailable and continue with other supported options.
-- If the route graph has no verified alternative, say so rather than inventing one.
-- Keep API keys server-side and apply timeouts and response validation.
-- Do not send names, emails, or unnecessary personal details to the model.
-Keep the AI scope small
-For a three-day build, one hosted LLM endpoint is enough. Skip custom model training, agents, and elaborate retrieval systems. The meaningful AI contribution is grounded explanation of a real comparison—not adding a chatbot merely to call the product AI-powered.
-6. Working with sparse and uncertain data
-The product must work when there are zero to five reports across a route, or none at all.
-Evidence categories
-Data	How to treat it
-Schedule extracted from the PDF	Published/scheduled information; verify route names, stops, and times manually
-External travel estimate	Estimate from the named provider at the time retrieved; not a guarantee
-Student observation	A timestamped report from a user; may be mistaken or incomplete
-User-entered fare or pickup estimate	A user-provided value; show when it was entered
-Demo-only scenario	Simulated data used for testing; visibly label it as simulated
+---
 
+## 1. Problem and impact
 
-Report states
-Label	Meaning
-Unconfirmed	One report with no independent corroboration
-Corroborated	At least one independent account supports the report within the chosen freshness window
-Conflicting reports	Recent reports disagree
-Stale	The report is outside the documented freshness window and no newer report replaces it
+### The problem
 
+For NED students who rely on the university pickup buses, a late or missing bus is a guessing game. You might not know whether to keep waiting or sort out another way home, especially if the bus has broken down. Right now, information is scattered across personal messages and word of mouth, and one unconfirmed message can easily turn into a misleading "fact."
 
-Corroboration means that accounts agree; it does not prove the claim. A lack of reports means unknown, not no disruption. A report saying “I haven't seen the bus” is evidence of that student's observation, not proof that the bus has been cancelled.
-What the app does when data is missing
-- No student reports: continue with the schedule and any available external estimates; show live shuttle status as unknown.
-- No verified schedule: don't display a guessed scheduled time.
-- No external traffic data: don't claim to know current traffic or road blockages.
-- No public-transport data: don't recommend a specific public-transport connection.
-- No reliable fare: show the cost as unknown and ask the student to check the service.
-- Conflicting reports: surface the disagreement instead of silently choosing one.
-- No feasible route found: explain that the current dataset does not support a recommendation.
-Freshness windows should be configured and documented for the demo. Do not show numerical confidence probabilities unless they have been calibrated against real outcomes.
-7. Data model
-Keep the schema small. Add tables only for features actually implemented.
-campuses
-Column	Type	Notes
-id	UUID	Primary key
-name	text	
-slug	text	
-created_at	timestamp	
+### Who it's for
 
+A NED student standing at a known pickup point, trying to decide whether to keep waiting or look at other options.
 
-stops
-Column	Type	Notes
-id	UUID	Primary key
-campus_id	UUID	FK to campuses
-name	text	
-latitude / longitude	numeric, nullable	Only if the coordinates are verified and needed for mapping
-source_note	text	PDF/page or other source
-is_active	boolean	
+### Why it matters
 
+That uncertainty costs students time and makes it harder to plan the trip home. OnRoute is meant to reduce *information* uncertainty. It doesn't claim to prevent delays or make anyone's journey faster. Before treating our assumptions as facts, we'd like to talk to a few students and confirm the route and stop details.
 
-routes
-Column	Type	Notes
-id	UUID	Primary key
-campus_id	UUID	FK to campuses
-name	text	Route label from the source
-source_note	text	Source and verification status
+### Our proposed solution
 
+OnRoute is a student-run bus reliability and incident-information service. Students post timestamped observations such as "bus seen," "not seen at expected time," or "breakdown reported." Others can corroborate a report or flag it. The interface separates recent, corroborated information from stale or unverified reports, so it's clear what's solid and what isn't.
 
-route_stops
-Column	Type	Notes
-id	UUID	Primary key
-route_id	UUID	FK to routes
-stop_id	UUID	FK to stops
-stop_order	integer	Sequence on the route
-scheduled_time	time, nullable	Only where supported by the PDF
-service_day_note	text, nullable	If the source specifies different service days
+### Impact hypotheses and how we'd test them
 
+- Students can see relevant, recent reports for their pickup point without digging through multiple chats.
+- The interface is upfront about uncertainty instead of presenting guesses as facts.
+- A small pilot can tell us about report freshness, corroboration, repeat usage, and whether students feel the information helped them decide what to do.
 
-reports
-Column	Type	Notes
-id	UUID	Primary key
-campus_id	UUID	FK to campuses
-stop_id	UUID	FK to stops
-author_id	UUID	FK to authenticated profile
-event_type	enum	bus_seen, not_seen, possible_disruption
-note	text, nullable	Length-limited
-created_at	timestamp	Server timestamp
-status	enum	active, flagged, hidden
+These are hypotheses, not proven outcomes. We won't claim that OnRoute reduces waiting time or improves bus punctuality.
 
+---
 
-report_responses (optional if time allows)
-Column	Type	Notes
-id	UUID	Primary key
-report_id	UUID	FK to reports
-user_id	UUID	FK to profile
-response_type	enum	corroborate, flag
-created_at	timestamp	Server timestamp
+## 2. Principles and boundaries
 
+- **Student-first.** Reporting and viewing work without NED administration being involved.
+- **Evidence before confidence.** Every report carries a timestamp and a source account. Confidence comes from how recent a report is and whether independent users corroborate it.
+- **No fake live tracking.** We won't claim GPS tracking, an official feed, verified bus locations, or guaranteed ETAs unless we integrate and validate a real source.
+- **No made-up alternatives.** We only suggest other transport if we've verified the route or service. For the hackathon, "consider another option" stays the student's own call.
+- **Privacy by default.** We don't expose anyone's precise live location, and we never sell individual travel histories.
+- **The smallest useful loop.** A student picks a stop, reads current reports, submits an observation, and watches the confidence update.
 
-Unique constraint on (report_id, user_id, response_type).
-journey_queries (optional, store minimally)
-For the hackathon, trip inputs can be processed without storing them. If persistence is necessary, store only the minimum fields needed for debugging and remove or aggregate records after the demo. Do not create a history of precise student movements by default.
-Important constraints
-- Enforce permissions in the database, not only the UI.
-- Users cannot respond to their own reports.
-- Apply basic rate limits and duplicate-report checks.
-- Avoid collecting precise live location unless it is genuinely needed and the user explicitly consents.
-- Do not store personal trip history by default.
-- Keep moderation and audit access restricted.
-8. Technical approach and integrations
-Choose the stack the team can deliver with. A low-risk default:
-Layer	Choice
-Frontend	React + Vite + TypeScript; responsive and phone-first
-Backend/database/auth	Supabase (PostgreSQL, managed authentication, row-level security)
-Route logic	A small deterministic graph/search implementation over the curated route dataset
-AI	One hosted LLM API called from a server-side function
-Optional mapping	One map/routing provider, only after access, quota, billing, and response quality are tested
-Deployment	Vercel or Netlify for the frontend; backend/serverless function as needed
-Validation	Input validation, database constraints, and tests for route feasibility and report-state rules
+---
 
+## 3. A concrete user journey
 
-Shuttle PDF processing
-- Inspect the actual PDF first: determine whether the text is selectable, scanned, tabular, or image-based.
-- Extract a limited subset of routes and stops for the MVP.
-- Manually check route order and times against the source pages.
-- Keep the PDF/page reference or source note with the imported data.
-- If OCR or parsing is unreliable, enter the small demo dataset manually rather than trusting malformed extraction.
-External data access
-Before committing to a provider, test one representative origin/destination in Karachi and verify that the response includes the data the app needs. Check API access, billing, rate limits, attribution requirements, and terms of use. Do not assume that a website being publicly accessible means its data has an API available for the app.
-- Maps/traffic: Potentially useful for road journey estimates if a working API is configured.
-- Public transport: Use only verified route information; do not assume a complete live Karachi feed.
-- Bykea/inDrive: Treat as user-checked options or manually entered quotes unless an authorized, working integration is confirmed.
-- Road blockages: Do not claim detection without a source that actually supplies current closure information.
-If Devmarketplace provides a relevant component, inspect its real capabilities and terms before using it. Do not invent integrations or claim that a component is available before checking.
-Security basics
-- Secrets live in environment variables or the platform's secret manager.
-- LLM and maps calls happen server-side where required.
-- Rate-limit expensive endpoints.
-- Validate external API responses before using them in route calculations.
-- Render user-submitted text safely.
-- Label seeded and simulated data clearly.
-9. Team readiness and roles
-Assign roles according to actual teammate skills; do not assume expertise that has not been confirmed.
-Role	Focus
-Frontend / product owner	Journey inputs, option cards, explanation UI, mobile usability
-Route/data owner	Parse and verify PDF data, model stops and routes, implement route graph and comparison logic
-AI/integration owner	LLM explanation endpoint, optional maps integration, timeouts, data grounding and fallback
-Integration/demo owner	Deployment, end-to-end testing, README, test scenarios, demo script
+1. A student signs in and selects NED as their campus.
+2. They pick a pickup point from a small, manually verified list of stops.
+3. The stop page shows the published expected time (only if it's been supplied and verified), the latest reports, how old each one is, and a confidence label.
+4. The student submits one structured observation: *Bus seen*, *Not seen by expected time*, or *Breakdown/route disruption reported*, with an optional short note.
+5. The system stores the observation with a server timestamp and the author.
+6. A second student can corroborate or flag the report. Nobody can corroborate their own report.
+7. A deterministic rule works out the visible evidence state from freshness, corroboration, and whether reports conflict. The labels are *Unconfirmed*, *Corroborated*, *Conflicting reports*, and *Stale*.
+8. The student makes their own decision. OnRoute never invents an ETA.
+9. If time allows, a minimal moderator view lets us hide abusive reports and manage the seeded stops.
 
+---
 
-For a smaller team, combine AI with backend or route/data work. Agree on the data schema and API contracts early. One person must own the final integrated build and deployment.
-Reuse strategy
-- Use managed authentication and a managed database rather than building them from scratch.
-- Reuse familiar UI components and official SDKs.
-- Check the actual Devmarketplace catalogue and reuse only tools that can be tested in time.
-- Avoid multiple LLM providers, elaborate agent frameworks, and unnecessary mapping libraries.
-- Keep the demo small enough that the team can explain every major result.
-10. Three-day execution plan (19–22 October)
-Day 1, 19 October: route data and skeleton
-- [ ] Inspect the shuttle PDF and choose a manageable route subset.
-- [ ] Extract stops, route order, and schedule entries; manually verify them.
-- [ ] Create the repository, app skeleton, and deployment.
-- [ ] Define the route data schema and implement the basic route graph.
-- [ ] Agree on request/response shapes and assign owners.
-Exit condition: the app can load the curated route dataset and show the selected route/stop information.
-Day 2, 20 October: working decision flow
-- [ ] Build origin, destination, arrival deadline, and preference inputs.
-- [ ] Generate a small set of feasible options from the route graph.
-- [ ] Display supported schedule information, transfers, walking requirements, and unknown fields.
-- [ ] Add the basic timestamped report flow if the core comparison works.
-- [ ] Test invalid inputs, missing connections, and conflicting or stale reports.
-Exit condition: a student can enter a journey and receive a transparent comparison based on actual seeded data.
-Day 3, 21 October: AI explanation and optional integrations
-- [ ] Add the LLM explanation over structured option results.
-- [ ] Add a maps/traffic provider only if access and a real Karachi test are successful.
-- [ ] Add user-entered ride-hailing quote fields if useful for the demo.
-- [ ] Implement API failure and missing-data fallbacks.
-- [ ] Test the full flow on a phone-sized layout, deploy, and write demo instructions.
-Exit condition: the deployed app compares at least two supported options and explains the trade-offs without inventing facts. If the AI call fails, the comparison remains usable.
-22 October: freeze and submit
-- [ ] Freeze features and avoid last-minute architectural changes.
-- [ ] Test the demo from a clean session.
-- [ ] Check that every schedule, estimate, report, and simulated scenario is labelled correctly.
-- [ ] Verify deployment, environment configuration, repository, documentation, and licence notices.
-- [ ] Prepare a short demo with one normal journey and one disruption scenario.
-11. Acceptance criteria
-The MVP is ready to demonstrate when:
-- [ ] A student can select an origin, destination, and arrival deadline.
-- [ ] The app loads the curated shuttle route data and identifies feasible options from it.
-- [ ] The app does not recommend an unmodelled transfer or invented route.
-- [ ] Each option displays the values it can support and marks missing information as unknown.
-- [ ] The app distinguishes scheduled information from real-time estimates and student reports.
-- [ ] The decision logic produces a consistent comparison for the same inputs.
-- [ ] The AI explanation refers only to the structured results and does not create unsupported routes, times, or prices.
-- [ ] If the LLM or external API fails, the app shows a clear fallback rather than a fabricated answer.
-- [ ] If reporting is implemented, reports persist with timestamps and conflicting reports remain visible as conflicting.
-- [ ] A deployed demo and setup instructions are available.
-12. Risks and validation
-Risk	Mitigation
-Too few student reports	The comparison works from route data without reports; reports are an additional evidence source
-PDF is difficult to parse	Use a small manually curated subset and verify it against the source
-Shuttle schedule is incomplete or outdated	Label source and verification status; do not imply live service status
-No working maps API or quota	Keep the MVP usable with shuttle-only comparisons and clearly labelled missing data
-Incomplete public-transport data	Do not recommend unsupported connections
-No Bykea/inDrive API access	Ask the user to check the service and optionally enter the current quote
-Road blockage data unavailable	Do not claim to detect current road closures
-False or malicious student reports	Timestamps, independent corroboration, rate limits, flagging, and moderation reduce but do not eliminate risk
-LLM hallucination or outage	Keep calculations deterministic, constrain the prompt/output, and provide a non-AI fallback
-Scope grows too large	Deliver one end-to-end route comparison before adding providers or more routes
-No university cooperation	Use student-first data collection and label sources without implying official endorsement
+## 4. MVP feature list
 
+### Must have
 
-Before final submission, run a few short student interviews and validate the chosen routes with students who know them. Informal feedback is useful but is not a representative study. Record what was actually tested.
-13. Implementation tasks / code gigs
-Choose tasks that directly support the MVP and meet the event's actual submission rules. Candidate tasks, depending on what the Devmarketplace catalogue provides:
-1. Route comparison utility: given a curated route graph and journey preferences, return feasible options and explicit unknowns. Include tests for missing connections and arrival deadlines.
-2. Grounded AI explanation endpoint: accept structured option results, call one hosted LLM, validate the response, and return a safe fallback on failure.
-If the event requires using already-published gigs rather than creating tasks, select the closest real, available ones after checking the catalogue. Do not invent gig names, availability, or integration claims.
-14. Repository and submission checklist
-Until kickoff, keep the repository documentation-only if the event rules require it. Do not commit implementation code before the permitted start time.
+- A responsive web app that works well on a phone
+- Sign-in and sign-out through a managed authentication service
+- NED campus and seeded pickup-point selection
+- A stop detail page with the latest timestamped reports
+- A structured report form
+- Corroborate or flag a report, one action per account per report
+- Rule-based confidence and freshness labels
+- A persistent relational database
+- Basic abuse controls: authentication, duplicate and rate limits, input validation, and report flagging
+- A public README covering setup, architecture, limitations, and the demo flow
+- A deployed app with a small seeded demo dataset
 
-The final submission should include:
-- [ ] Problem, primary user, impact hypotheses, and limitations.
-- [ ] Concrete end-to-end user journey.
-- [ ] Route data source and verification notes.
-- [ ] Decision-engine approach and AI guardrails.
-- [ ] Data model and architecture.
-- [ ] Three-day plan, team roles, and acceptance criteria.
-- [ ] Actual Devmarketplace components reused, if any, with accurate descriptions and licences.
-- [ ] Deployment, demo instructions, known limitations, and any simulated-data labels.
-15. Future direction (not part of the MVP)
-If the NED pilot shows repeat usage and students find the recommendations useful, OnRoute could expand to more NED routes and later to other campuses. Possible future additions include better public-transport coverage, verified disruption feeds, and sponsor-funded incentives for useful reports. Institutional analytics or partnerships would require separate validation and should not be assumed.
+### If time allows
 
-Do not sell individual student travel histories. Do not make a critical transport decision depend on an unverified AI claim. The product should remain clear about the difference between a known fact, an estimate, a student observation, and something the system does not know.
+- A minimal moderator screen
+- Admin-editable stop and schedule seed data
+- An LLM-generated plain-language summary of existing reports, grounded strictly in retrieved records and clearly labelled as an AI summary
+- A simple aggregate view of incidents by stop
+
+### Out of scope for now
+
+- Live GPS, automatic vehicle tracking, or hardware integration
+- Guaranteed arrival-time prediction
+- Official NED integration or endorsement
+- Automated route alternatives or maps-based routing
+- Native Android/iOS apps
+- Rewards, redeemable credits, wallets, payments, or a sponsor marketplace
+- Multi-university onboarding and tenant administration (we'll just keep the schema from blocking this later)
+- Training a custom ML model, or claiming predictive accuracy from sparse data
+
+---
+
+## 5. AI feature: evidence-grounded incident summary
+
+The AI's job is to explain the evidence we already have, not to fill in facts we don't.
+
+**Input:** A backend-generated bundle of recent reports for one stop, including event type, timestamp, corroboration count, and any schedule data explicitly marked as verified.
+
+**Output:** A short summary, for example:
+
+> One bus-sighting report was submitted 4 minutes ago and has not been corroborated. There isn't enough information to estimate arrival.
+
+### Guardrails
+
+- The model only sees records the backend fetched for the selected stop.
+- It shouldn't create times, sightings, causes, routes, or ETAs that aren't in the supplied evidence.
+- The underlying report timestamps are shown right next to the summary.
+- If the model call fails, the reports and deterministic labels show up as normal.
+- Generated text is there to explain, not to act as a source of truth.
+- Names, emails, and other unnecessary personal data never go to the model.
+- The summary is optional. Reporting and confidence labels work fine without it.
+
+### Implementation
+
+One hosted LLM API called from the backend, with a compact prompt, a strict response schema, a short output limit, and proper timeout and error handling. Given that we only have three days, we're deliberately skipping RAG, agents, fine-tuning, and any complex ML pipeline.
+
+---
+
+## 6. Confidence and freshness rules
+
+For the MVP we'll use simple, transparent rules instead of machine learning.
+
+| Label | Meaning |
+|---|---|
+| **Unconfirmed** | One recent report with no independent corroboration. |
+| **Corroborated** | At least one independent account backs up a report within the freshness window. |
+| **Conflicting reports** | Recent reports disagree, e.g. a bus-sighting and a disruption report for the same stop and time window. |
+| **Stale** | The report is older than the freshness window and nothing newer confirms it. |
+
+We'll pick an initial freshness window based on the seeded schedule and our demo scenarios, and write it down. We also won't show a numerical probability unless it's been calibrated against real outcomes. Worth remembering that corroboration means independent accounts *agree*, which isn't the same as proving the report is true.
+
+---
+
+## 7. Data model
+
+A small relational schema is enough. Every user-generated record is scoped to a campus, even though the first deployment only has NED.
+
+### `campuses`
+
+| Column | Type | Notes |
+|---|---|---|
+| `id` | UUID | Primary key |
+| `name` | text | |
+| `slug` | text | |
+| `created_at` | timestamp | |
+
+### `stops`
+
+| Column | Type | Notes |
+|---|---|---|
+| `id` | UUID | Primary key |
+| `campus_id` | UUID | FK to `campuses` |
+| `name` | text | |
+| `route_label` | text, nullable | Display label only |
+| `scheduled_time` | time, nullable | Only if verified |
+| `schedule_source` | text, nullable | |
+| `is_active` | boolean | |
+
+### `profiles`
+
+| Column | Type | Notes |
+|---|---|---|
+| `id` | UUID | Primary key, matches the auth user ID |
+| `campus_id` | UUID | FK to `campuses` |
+| `display_name` | text, optional | Avoids exposing emails publicly |
+| `created_at` | timestamp | |
+
+### `reports`
+
+| Column | Type | Notes |
+|---|---|---|
+| `id` | UUID | Primary key |
+| `campus_id` | UUID | FK to `campuses` |
+| `stop_id` | UUID | FK to `stops` |
+| `author_id` | UUID | FK to `profiles` |
+| `event_type` | enum | `bus_seen`, `not_seen`, `disruption` |
+| `note` | text, nullable | Length-limited |
+| `created_at` | timestamp | Server timestamp |
+| `status` | enum | `active`, `flagged`, `hidden` |
+
+### `report_responses`
+
+| Column | Type | Notes |
+|---|---|---|
+| `id` | UUID | Primary key |
+| `report_id` | UUID | FK to `reports` |
+| `user_id` | UUID | FK to `profiles` |
+| `response_type` | enum | `corroborate`, `flag` |
+| `created_at` | timestamp | Server timestamp |
+
+Unique constraint on `(report_id, user_id, response_type)`.
+
+### Important constraints
+
+- Permissions are enforced in the database itself, not just in the UI.
+- Users can't respond to their own reports.
+- Basic rate limits and duplicate-report checks are in place.
+- We don't store precise user location.
+- Audit and moderation actions stay minimal and access-controlled.
+
+---
+
+## 8. Technical approach
+
+We'll go with whatever stack the team knows best. A low-risk default would be:
+
+| Layer | Choice |
+|---|---|
+| Frontend | React + Vite + TypeScript, responsive and phone-first |
+| Backend, database, auth | Supabase (PostgreSQL, managed authentication, row-level security) |
+| AI | One hosted LLM API called from a server-side function; the API key is never exposed in browser code |
+| Deployment | Vercel or Netlify for the frontend, Supabase for the backend; a server-side deployment only if the AI endpoint needs it |
+| Validation | Server-side input checks, database constraints, and a few focused tests for report permissions and confidence rules |
+
+If Devmarketplace offers a suitable starter, auth component, database template, or deployable integration, we'll look at what it actually does and use it only if it saves time. We don't want to assume a component exists, or burn the hackathon on an unfamiliar tool without a fallback.
+
+### Security basics
+
+- Secrets live in environment variables.
+- Row-level security covers campus, report, and response data.
+- Anonymous report creation isn't allowed.
+- Users can't edit someone else's report.
+- Notes have a length limit and user text is rendered safely.
+- The demo dataset contains no real student travel histories.
+
+---
+
+## 9. Team readiness and roles
+
+Roles will be matched to what each teammate is actually good at, and we won't claim skills we don't have.
+
+| Role | Focus |
+|---|---|
+| **Frontend / product owner** | Stop selection, report feed, report form, confidence labels, mobile usability |
+| **Backend / data owner** | Schema, authentication, permissions, report APIs and queries, seed data |
+| **AI / integration owner** | Evidence-bundle generation, the hosted model call, fallback behaviour, test cases |
+| **Integration / demo owner** (can be combined with another role) | Deployment, README, end-to-end tests, demo script, checking the full user journey |
+
+With a smaller team, AI can merge with backend and deployment/docs can merge with frontend. We'll agree on API shapes and the schema before splitting up to build in parallel, and one person will own the final integration and deployment.
+
+### Reuse strategy
+
+- We'd rather use managed authentication and PostgreSQL than build our own.
+- Established UI components and official SDKs are fine where we already understand them.
+- We'll check Devmarketplace for relevant, working components and record exactly what we reuse.
+- Open-source libraries are welcome as long as the licences are compatible, and we'll keep any required notices.
+- We're steering clear of multiple AI services, elaborate agent frameworks, and unnecessary mapping libraries.
+
+---
+
+## 10. Three-day execution plan (19-22 October)
+
+### Day 1, 19 October: foundations
+
+- [ ] Confirm the exact stop and report workflow, and check the seed list with a few students
+- [ ] Create the repository, deploy a skeleton, and set up environment variables
+- [ ] Set up the schema, auth, row-level security, and seed data
+- [ ] Agree on request/response shapes and assign owners
+
+**Exit condition:** a student can sign in and view seeded stops.
+
+### Day 2, 20 October: the core reporting loop
+
+- [ ] Build the stop feed and the structured report form
+- [ ] Persist reports and corroborate/flag actions
+- [ ] Implement the freshness and conflict labels plus abuse checks
+- [ ] Test the full flow with two separate accounts
+
+**Exit condition:** two users can submit and corroborate reports, and labels update from database state.
+
+### Day 3, 21 October: AI, polish, deployment
+
+- [ ] Add the AI summary, but only once the core flow works
+- [ ] Add fallback behaviour, empty states, and error handling
+- [ ] Test mobile layout, permissions, stale and conflicting reports, and API failures
+- [ ] Deploy, then write the README and demo steps
+
+**Exit condition:** the deployed end-to-end journey works reliably. If the AI threatens that, we'll cut AI summarization before we touch the core reporting loop.
+
+### 22 October: submission and contingency
+
+- [ ] Freeze features
+- [ ] Run the demo from a clean session
+- [ ] Check the public repository and docs, the deployment link, environment configuration, and licence notices
+- [ ] Prepare a short demo showing one unconfirmed report becoming corroborated, plus a separate conflicting or stale case
+
+---
+
+## 11. Acceptance criteria
+
+We'll consider the MVP ready to demo when:
+
+- [ ] A new student can sign in and select a seeded pickup point.
+- [ ] They can read reports with timestamps and evidence labels.
+- [ ] A signed-in student can submit a report and still see it after a refresh.
+- [ ] A second account can corroborate it, and self-corroboration is blocked.
+- [ ] Old reports become stale according to the documented rule.
+- [ ] Conflicting reports show up as conflicting, not silently resolved.
+- [ ] AI summaries, if included, are based on retrieved records and fail safely.
+- [ ] A deployed demo and setup documentation are available.
+
+---
+
+## 12. Risks and validation
+
+| Risk | How we plan to handle it |
+|---|---|
+| Too few students report | Test with a small student group and keep reporting quick. We won't claim network effects until we've actually seen them. |
+| False or malicious reports | Corroboration, rate limits, flagging, freshness labels, and moderation. These reduce the risk but don't eliminate it. |
+| No reliable schedule source | Mark the schedule as unavailable instead of inventing times. |
+| Sparse history | Avoid ETA predictions and ML claims. |
+| No university cooperation | Use student-verified seed data, label its source clearly, and avoid implying official status. |
+| AI hallucination or outage | Ground it in retrieved records and keep the core interface working without AI. |
+| Rewards distract from the MVP | Leave credits, sponsors, and payments out of the three-day build. |
+
+Before submission, we'll run a few short student interviews and verify the initial stop list. We'll record what we actually checked and won't present informal feedback as a representative study.
+
+---
+
+## 13. Two code gigs / implementation tasks
+
+We'd like to pick two small, clearly scoped code gigs that directly support the MVP and meet the event's submission requirements. Our suggestions, depending on what the Devmarketplace catalogue actually has:
+
+1. **Report confidence utility:** implement and test the deterministic freshness, corroboration, conflict, and stale-state rules.
+2. **Evidence-grounded AI summary endpoint:** a server-side LLM call that summarizes only the supplied report records, validates the output, and returns a safe fallback on failure.
+
+If the event requires using already-published gigs rather than creating our own, we'll choose the closest real, available ones after checking the catalogue, without making up gig names, availability, or integration claims.
+
+---
+
+## 14. Repository and submission checklist
+
+Until kickoff, we'll keep the repository documentation-only if the event rules require it. It will hold this spec and any required pitch or README material, with no implementation code committed before the permitted start time.
+
+The final submission will include:
+
+- [ ] Problem, primary user, impact hypothesis, and limitations
+- [ ] The concrete end-to-end user journey
+- [ ] The AI feature and its guardrails
+- [ ] Data model and architecture
+- [ ] The three-day plan, team roles, and acceptance criteria
+- [ ] Open-source and Devmarketplace reuse notes, with actual component names and licences
+- [ ] Deployment and demo instructions, plus known limitations
+
+---
+
+## 15. Future direction (not part of the MVP)
+
+If the NED pilot shows repeat use and genuinely useful reports, OnRoute could grow to other campuses through configurable campus and stop data, with strict tenant isolation. We could also explore sponsor-funded rewards for useful reports and reliability analytics for institutions. Neither demand nor revenue is validated yet.
+
+Whatever happens, we won't sell individual students' travel histories, and urgent transport information should never be locked behind rewards.

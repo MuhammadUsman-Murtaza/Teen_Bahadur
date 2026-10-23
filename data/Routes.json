@@ -1,0 +1,3587 @@
+{
+ "meta": {
+  "source": "NEDUET Shuttle Services - Detail of Routes, 2024-25 (transcribed to markdown)",
+  "scope": "Morning routes only. Evening routes excluded from MVP.",
+  "verification_status": "unverified - data owner must check against the PDF page by page",
+  "KNOWN_GAP": "The PDF gives ONLY the departure time at the first stop plus the stop ORDER. It gives no times for later stops and no arrival time at NED. Per-stop times are therefore NOT 'scheduled'. They are 'estimated' and only exist if route_run_minutes or minutes_from_previous is filled in by the team.",
+  "TO_VERIFY": [
+   "Ship Owner College (route-7) vs Ship Owner (route-13): kept as separate stops until confirmed",
+   "Route 14+3 lists Buffer Zone -> Shadman No.1 -> Sakhi Hassan, opposite order to Route 7 on the same stops: confirm against the PDF",
+   "Route 3 has no standalone entry (combined into 14+3 and 17+3)",
+   "Merged spelling variants: Malir Halt/Hault, Nursary/Nursery, Sakhi Hassan Chowrangi/Sakhi Hassan, 2K Bus Stop/2K-Stop, Hydri/Hydri Stop, Five Star/Five Star Chowrangi, Numaish/Numaish Chowrangi, Malir N-15/No. 15"
+  ],
+  "service_notes": [
+   "Service only at specified stops",
+   "Services may be suspended, rescheduled or combined in uncertain city situations",
+   "Routes 14+3 and 17+3 combined due to driver shortage"
+  ]
+ },
+ "config": {
+  "fresh_report_minutes": 20,
+  "eta_band_minutes": 4,
+  "catch_buffer_minutes": 3,
+  "note": "Defaults are team assumptions, not facts. Show them in the UI/README."
+ },
+ "routes": [
+  {
+   "id": "route-1",
+   "number": "1",
+   "direction": "morning",
+   "first_stop_departure": "07:40",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "city-campus",
+     "raw_name": "City Campus",
+     "time": "07:40",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "jama-cloth",
+     "raw_name": "Jama Cloth",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "radio-pakistan",
+     "raw_name": "Radio Pakistan",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "7th-day-hospital",
+     "raw_name": "7th Day Hospital",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "numaish",
+     "raw_name": "Numaish",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "gurumandir",
+     "raw_name": "Gurumandir",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "jamshed-road-3",
+     "raw_name": "Jamshed Road (No. 3)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "new-town",
+     "raw_name": "New Town",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "askari-park",
+     "raw_name": "Askari Park",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 10,
+     "stop_id": "mumtaz-manzil",
+     "raw_name": "Mumtaz Manzil",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 11,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NEDUET (Main Campus)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-2",
+   "number": "2",
+   "direction": "morning",
+   "first_stop_departure": "07:40",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "paposh",
+     "raw_name": "Paposh",
+     "time": "07:40",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "nazimabad-7",
+     "raw_name": "Nazimabad (No. 7)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "board-office",
+     "raw_name": "Board Office",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "hydri",
+     "raw_name": "Hydri",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "2k-stop",
+     "raw_name": "2K Bus Stop",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "sakhi-hassan",
+     "raw_name": "Sakhi Hassan",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "shadman-2",
+     "raw_name": "Shadman (No. 2)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "namak-bank",
+     "raw_name": "Namak Bank",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "sohrab-goth",
+     "raw_name": "Sohrab Goth",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 10,
+     "stop_id": "gulshan-chowrangi",
+     "raw_name": "Gulshan Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 11,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NEDUET (Main Campus)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-4",
+   "number": "4",
+   "direction": "morning",
+   "first_stop_departure": "07:20",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "korangi-5",
+     "raw_name": "Korangi (No. 5)",
+     "time": "07:20",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "korangi-4",
+     "raw_name": "Korangi (No. 4)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "korangi-31-2",
+     "raw_name": "Korangi (No. 31/2)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "korangi-21-2",
+     "raw_name": "Korangi (No. 21/2)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "korangi-2",
+     "raw_name": "Korangi (No. 2)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "korangi-1-near-chakra-goth",
+     "raw_name": "Korangi (No. 1, Near Chakra Goth)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "nasir-jump",
+     "raw_name": "Nasir Jump",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "korangi-crossing",
+     "raw_name": "Korangi Crossing",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "qayyumabad-chowrangi",
+     "raw_name": "Qayyumabad Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 10,
+     "stop_id": "akhtar-colony",
+     "raw_name": "Akhtar Colony",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 11,
+     "stop_id": "kala-pull",
+     "raw_name": "Kala Pull",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 12,
+     "stop_id": "ftc-building",
+     "raw_name": "FTC Building",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 13,
+     "stop_id": "nursery",
+     "raw_name": "Nursery",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 14,
+     "stop_id": "baloch-colony",
+     "raw_name": "Baloch Colony",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 15,
+     "stop_id": "karsaz",
+     "raw_name": "Karsaz",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 16,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NEDUET (Main Campus)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-5",
+   "number": "5",
+   "direction": "morning",
+   "first_stop_departure": "07:40",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "4k-chowrangi",
+     "raw_name": "4K Chowrangi",
+     "time": "07:40",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "2-minute-chowrangi",
+     "raw_name": "2 Minute Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "5c-4-bara-market",
+     "raw_name": "5C-4 (Bara Market)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "saleem-centre",
+     "raw_name": "Saleem Centre",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "u-p-mor",
+     "raw_name": "U.P Mor",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "nagan-chowrangi",
+     "raw_name": "Nagan Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "gulshan-chowrangi",
+     "raw_name": "Gulshan Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NEDUET (Main Campus)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-6",
+   "number": "6",
+   "direction": "morning",
+   "first_stop_departure": "07:05",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "shama-shopping-centre",
+     "raw_name": "Shama Shopping Centre",
+     "time": "07:05",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "shah-faisal-police-station",
+     "raw_name": "Shah Faisal Police Station",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "bagh-e-korangi",
+     "raw_name": "Bagh-e-Korangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "singer-chowrangi",
+     "raw_name": "Singer Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "khaddi-stop",
+     "raw_name": "Khaddi Stop",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "korangi-5",
+     "raw_name": "Korangi No. 5",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "korangi-6",
+     "raw_name": "Korangi No. 6",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "landhi-6",
+     "raw_name": "Landhi No. 6",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "landhi-5",
+     "raw_name": "Landhi No. 5",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 10,
+     "stop_id": "landhi-4",
+     "raw_name": "Landhi No. 4",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 11,
+     "stop_id": "landhi-3",
+     "raw_name": "Landhi No. 3",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 12,
+     "stop_id": "landhi-1",
+     "raw_name": "Landhi No. 1",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 13,
+     "stop_id": "landhi-89",
+     "raw_name": "Landhi No. 89",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 14,
+     "stop_id": "dawood-chowrangi",
+     "raw_name": "Dawood Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 15,
+     "stop_id": "murghi-khana",
+     "raw_name": "Murghi Khana",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 16,
+     "stop_id": "malir-15",
+     "raw_name": "Malir No. 15",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 17,
+     "stop_id": "malir-hault",
+     "raw_name": "Malir Hault",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 18,
+     "stop_id": "star-gate",
+     "raw_name": "Star Gate",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 19,
+     "stop_id": "natha-khan",
+     "raw_name": "Natha Khan",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 20,
+     "stop_id": "drig-road",
+     "raw_name": "Drig Road",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 21,
+     "stop_id": "nipa",
+     "raw_name": "Nipa",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 22,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NED Main Campus",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-7",
+   "number": "7",
+   "direction": "morning",
+   "first_stop_departure": "07:25",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "islam-chowk",
+     "raw_name": "Islam Chowk",
+     "time": "07:25",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "orangi-5",
+     "raw_name": "Orangi (No. 5)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "metro-cinema",
+     "raw_name": "Metro Cinema",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "abdullah-college",
+     "raw_name": "Abdullah College",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "ship-owner-college",
+     "raw_name": "Ship Owner College",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "qalandarya-chowk",
+     "raw_name": "Qalandarya Chowk",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "sakhi-hassan",
+     "raw_name": "Sakhi Hassan",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "shadman-1",
+     "raw_name": "Shadman No. 1",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "buffer-zone",
+     "raw_name": "Buffer Zone",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 10,
+     "stop_id": "fazal-mill",
+     "raw_name": "Fazal Mill",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 11,
+     "stop_id": "nipa",
+     "raw_name": "Nipa",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 12,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NEDUET (Main Campus)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-8",
+   "number": "8",
+   "direction": "morning",
+   "first_stop_departure": "07:00",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "punjab-chowrangi",
+     "raw_name": "Punjab Chowrangi",
+     "time": "07:00",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "kesc-office",
+     "raw_name": "KESC Office",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "defence-mor",
+     "raw_name": "Defence Mor",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "akhtar-colony",
+     "raw_name": "Akhtar Colony",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "express-way",
+     "raw_name": "Express Way",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "iqra-university",
+     "raw_name": "Iqra University",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "mehmoodabad-6",
+     "raw_name": "Mehmoodabad (No. 6)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "baloch-colony-bridge",
+     "raw_name": "Baloch Colony Bridge",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "nursery",
+     "raw_name": "Nursery",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 10,
+     "stop_id": "noorani-kabab",
+     "raw_name": "Noorani Kabab",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 11,
+     "stop_id": "shahed-e-millat-road",
+     "raw_name": "Shahed-e-Millat Road",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 12,
+     "stop_id": "lej-campus",
+     "raw_name": "LEJ Campus",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 13,
+     "stop_id": "agha-khan-hospital",
+     "raw_name": "Agha Khan Hospital",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 14,
+     "stop_id": "daalmian",
+     "raw_name": "Daalmian",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 15,
+     "stop_id": "millennium-mall",
+     "raw_name": "Millennium Mall",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 16,
+     "stop_id": "laal-flat",
+     "raw_name": "Laal Flat",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 17,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NEDUET (Main Campus)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-9",
+   "number": "9",
+   "direction": "morning",
+   "first_stop_departure": "07:15",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "safari-park",
+     "raw_name": "Safari Park",
+     "time": "07:15",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "nipa",
+     "raw_name": "Nipa",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "moti-mehel",
+     "raw_name": "Moti Mehel",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "16-chowrangi",
+     "raw_name": "16 No. Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "water-pump",
+     "raw_name": "Water Pump",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "gulberg-chowrangi",
+     "raw_name": "Gulberg Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "peoples-chowrangi",
+     "raw_name": "Peoples Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "sakhi-hassan",
+     "raw_name": "Sakhi Hassan Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "2k-stop",
+     "raw_name": "2K-Stop",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 10,
+     "stop_id": "five-star-chowrangi",
+     "raw_name": "Five Star Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 11,
+     "stop_id": "hydri",
+     "raw_name": "Hydri Stop",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 12,
+     "stop_id": "board-office",
+     "raw_name": "Board Office",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 13,
+     "stop_id": "nazimabad-7",
+     "raw_name": "Nazimabad (No. 7)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 14,
+     "stop_id": "nazimabad-petrol-pump",
+     "raw_name": "Nazimabad (Petrol Pump)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 15,
+     "stop_id": "liaquatabad-10",
+     "raw_name": "Liaquatabad (No. 10)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 16,
+     "stop_id": "baloch-hotel",
+     "raw_name": "Baloch Hotel",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 17,
+     "stop_id": "hassan-squire",
+     "raw_name": "Hassan Squire",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 18,
+     "stop_id": "lej-campus",
+     "raw_name": "LEJ Campus",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 19,
+     "stop_id": "khalid-bin-waleed-road",
+     "raw_name": "Khalid Bin Waleed Road",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 20,
+     "stop_id": "noorani-kabab",
+     "raw_name": "Noorani Kabab",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 21,
+     "stop_id": "numaish",
+     "raw_name": "Numaish Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 22,
+     "stop_id": "city-campus",
+     "raw_name": "City Campus",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-10",
+   "number": "10",
+   "direction": "morning",
+   "first_stop_departure": "07:40",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "five-star-chowrangi",
+     "raw_name": "Five Star Chowrangi",
+     "time": "07:40",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "crown-bakery",
+     "raw_name": "Crown Bakery",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "landi-kotal",
+     "raw_name": "Landi Kotal",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "dental-college",
+     "raw_name": "Dental College",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "peoples-chowrangi",
+     "raw_name": "Peoples Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "d-c-office",
+     "raw_name": "D.C Office",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "gulberg-chowrangi",
+     "raw_name": "Gulberg Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "water-pump",
+     "raw_name": "Water Pump",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "16-chowrangi",
+     "raw_name": "16-No. Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 10,
+     "stop_id": "fazal-mill",
+     "raw_name": "Fazal Mill",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 11,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NEDUET (Main Campus)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-11",
+   "number": "11",
+   "direction": "morning",
+   "first_stop_departure": "07:25",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "malir-hault",
+     "raw_name": "Malir Hault",
+     "time": "07:25",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "kala-board",
+     "raw_name": "Kala Board",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "laal-masjid",
+     "raw_name": "Laal Masjid",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "malir-tanki",
+     "raw_name": "Malir Tanki",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "r-c-d-ground",
+     "raw_name": "R.C.D Ground",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "model-colony",
+     "raw_name": "Model Colony",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "model-mor-cng-pump",
+     "raw_name": "Model Mor (CNG Pump)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "malir-cantt",
+     "raw_name": "Malir Cantt",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NEDUET (Main Campus)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-12",
+   "number": "12",
+   "direction": "morning",
+   "first_stop_departure": "07:00",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "e-complex",
+     "raw_name": "E-Complex",
+     "time": "07:00",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "steel-town-gate",
+     "raw_name": "Steel Town Gate",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "national-highway",
+     "raw_name": "National Highway",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "qaidabad",
+     "raw_name": "Qaidabad",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "murghi-khana",
+     "raw_name": "Murghi Khana",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "malir-hault",
+     "raw_name": "Malir Hault",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "model-colony",
+     "raw_name": "Model Colony",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "cantt-gate-5",
+     "raw_name": "Cantt Gate (No. 5)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "safoora-chowrangi",
+     "raw_name": "Safoora Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 10,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NEDUET (Main Campus)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-13",
+   "number": "13",
+   "direction": "morning",
+   "first_stop_departure": "07:25",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "ajmer-nagri",
+     "raw_name": "Ajmer Nagri",
+     "time": "07:25",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "bara-dari",
+     "raw_name": "Bara Dari",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "disco-mor",
+     "raw_name": "Disco Mor",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "muhammad-shah-kabrustan",
+     "raw_name": "Muhammad Shah Kabrustan",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "anda-mor",
+     "raw_name": "Anda Mor",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "qalandarya-chowk",
+     "raw_name": "Qalandarya Chowk",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "ship-owner",
+     "raw_name": "Ship Owner",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "five-star-chowrangi",
+     "raw_name": "Five Star",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "landi-kotal",
+     "raw_name": "Landi Kotal",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 10,
+     "stop_id": "tahir-villa",
+     "raw_name": "Tahir Villa",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 11,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NEDUET (Main Campus)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-14-3",
+   "number": "14+3",
+   "direction": "morning",
+   "first_stop_departure": "07:25",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "buffer-zone",
+     "raw_name": "Buffer Zone",
+     "time": "07:25",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "nagan-chowrangi",
+     "raw_name": "Nagan Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "shadman-2",
+     "raw_name": "Shadman (No. 2)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "shadman-1",
+     "raw_name": "Shadman (No. 1)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "sakhi-hassan",
+     "raw_name": "Sakhi Hassan",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "2k-stop",
+     "raw_name": "2K Bus Stop",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "five-star-chowrangi",
+     "raw_name": "Five Star Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "k-d-a-chowrangi",
+     "raw_name": "K.D.A Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "nazimabad-6",
+     "raw_name": "Nazimabad (No. 6)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 10,
+     "stop_id": "nazimabad-petrol-pump",
+     "raw_name": "Nazimabad (Petrol Pump)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 11,
+     "stop_id": "golimar-chowrangi",
+     "raw_name": "Golimar Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 12,
+     "stop_id": "dak-khana",
+     "raw_name": "Dak Khana",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 13,
+     "stop_id": "liaquatabad-10",
+     "raw_name": "Liaquatabad (No. 10)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 14,
+     "stop_id": "hassan-squire",
+     "raw_name": "Hassan Squire",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 15,
+     "stop_id": "nipa",
+     "raw_name": "Nipa",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 16,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NEDUET (Main Campus)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-15",
+   "number": "15",
+   "direction": "morning",
+   "first_stop_departure": "07:00",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "bakra-peri",
+     "raw_name": "Bakra Peri",
+     "time": "07:00",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "memon-goth",
+     "raw_name": "Memon Goth",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "khokhrapar",
+     "raw_name": "Khokhrapar",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "saudabad",
+     "raw_name": "Saudabad",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "jinnah-squire",
+     "raw_name": "Jinnah Squire",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "nad-e-ali",
+     "raw_name": "Nad-e-Ali",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "malir-15",
+     "raw_name": "Malir (No. 15)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "kala-board",
+     "raw_name": "Kala Board",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "malir-hault",
+     "raw_name": "Malir Halt",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 10,
+     "stop_id": "wireless-gate",
+     "raw_name": "Wireless Gate",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 11,
+     "stop_id": "natha-khan",
+     "raw_name": "Natha Khan",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 12,
+     "stop_id": "drig-road",
+     "raw_name": "Drig Road",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 13,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NEDUET (Main Campus)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-16",
+   "number": "16",
+   "direction": "morning",
+   "first_stop_departure": "07:40",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "lea-market",
+     "raw_name": "Lea Market",
+     "time": "07:40",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "lawrence-road",
+     "raw_name": "Lawrence Road",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "garden",
+     "raw_name": "Garden",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "lasbela",
+     "raw_name": "Lasbela",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "teen-hatti",
+     "raw_name": "Teen Hatti",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "jail-road",
+     "raw_name": "Jail Road",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "hassan-squire",
+     "raw_name": "Hassan Squire",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "urdu-university",
+     "raw_name": "Urdu University",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NEDUET (Main Campus)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  },
+  {
+   "id": "route-17-3",
+   "number": "17+3",
+   "direction": "morning",
+   "first_stop_departure": "07:15",
+   "departure_source": "schedule (PDF)",
+   "route_run_minutes": null,
+   "verification": "unverified",
+   "stops": [
+    {
+     "order": 1,
+     "stop_id": "naval-colony",
+     "raw_name": "Naval Colony",
+     "time": "07:15",
+     "time_source": "schedule",
+     "minutes_from_previous": null
+    },
+    {
+     "order": 2,
+     "stop_id": "shersha",
+     "raw_name": "Shersha",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 3,
+     "stop_id": "ghani-chowrangi",
+     "raw_name": "Ghani Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 4,
+     "stop_id": "habib-bank-bridge-crossing",
+     "raw_name": "Habib Bank (Bridge Crossing)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 5,
+     "stop_id": "nazimabad-4",
+     "raw_name": "Nazimabad (No. 4)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 6,
+     "stop_id": "nazimabad-petrol-pump",
+     "raw_name": "Nazimabad (Petrol Pump)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 7,
+     "stop_id": "liaquatabad-10",
+     "raw_name": "Liaquatabad 10 No.",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 8,
+     "stop_id": "ayesha-manzil",
+     "raw_name": "Ayesha Manzil",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 9,
+     "stop_id": "mukka-chowk",
+     "raw_name": "Mukka Chowk",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 10,
+     "stop_id": "13-d",
+     "raw_name": "13-D",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 11,
+     "stop_id": "maskan-chowrangi",
+     "raw_name": "Maskan Chowrangi",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    },
+    {
+     "order": 12,
+     "stop_id": "ned-main-campus",
+     "raw_name": "NEDUET (Main Campus)",
+     "time": null,
+     "time_source": null,
+     "minutes_from_previous": null
+    }
+   ]
+  }
+ ],
+ "stops": [
+  {
+   "id": "ned-main-campus",
+   "canonical_name": "NEDUET (Main Campus)",
+   "raw_names": [
+    "NEDUET (Main Campus)",
+    "NED Main Campus"
+   ],
+   "routes": [
+    "route-1",
+    "route-2",
+    "route-4",
+    "route-5",
+    "route-6",
+    "route-7",
+    "route-8",
+    "route-10",
+    "route-11",
+    "route-12",
+    "route-13",
+    "route-14-3",
+    "route-15",
+    "route-16",
+    "route-17-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "sakhi-hassan",
+   "canonical_name": "Sakhi Hassan",
+   "raw_names": [
+    "Sakhi Hassan",
+    "Sakhi Hassan Chowrangi"
+   ],
+   "routes": [
+    "route-2",
+    "route-7",
+    "route-9",
+    "route-14-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "malir-hault",
+   "canonical_name": "Malir Hault",
+   "raw_names": [
+    "Malir Hault",
+    "Malir Halt"
+   ],
+   "routes": [
+    "route-6",
+    "route-11",
+    "route-12",
+    "route-15"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "nipa",
+   "canonical_name": "Nipa",
+   "raw_names": [
+    "Nipa"
+   ],
+   "routes": [
+    "route-6",
+    "route-7",
+    "route-9",
+    "route-14-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "five-star-chowrangi",
+   "canonical_name": "Five Star Chowrangi",
+   "raw_names": [
+    "Five Star Chowrangi",
+    "Five Star"
+   ],
+   "routes": [
+    "route-9",
+    "route-10",
+    "route-13",
+    "route-14-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "2k-stop",
+   "canonical_name": "2K Bus Stop",
+   "raw_names": [
+    "2K Bus Stop",
+    "2K-Stop"
+   ],
+   "routes": [
+    "route-2",
+    "route-9",
+    "route-14-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "nazimabad-petrol-pump",
+   "canonical_name": "Nazimabad (Petrol Pump)",
+   "raw_names": [
+    "Nazimabad (Petrol Pump)"
+   ],
+   "routes": [
+    "route-9",
+    "route-14-3",
+    "route-17-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "liaquatabad-10",
+   "canonical_name": "Liaquatabad (No. 10)",
+   "raw_names": [
+    "Liaquatabad (No. 10)",
+    "Liaquatabad 10 No."
+   ],
+   "routes": [
+    "route-9",
+    "route-14-3",
+    "route-17-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "hassan-squire",
+   "canonical_name": "Hassan Squire",
+   "raw_names": [
+    "Hassan Squire"
+   ],
+   "routes": [
+    "route-9",
+    "route-14-3",
+    "route-16"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "city-campus",
+   "canonical_name": "City Campus",
+   "raw_names": [
+    "City Campus"
+   ],
+   "routes": [
+    "route-1",
+    "route-9"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "numaish",
+   "canonical_name": "Numaish",
+   "raw_names": [
+    "Numaish",
+    "Numaish Chowrangi"
+   ],
+   "routes": [
+    "route-1",
+    "route-9"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "nazimabad-7",
+   "canonical_name": "Nazimabad (No. 7)",
+   "raw_names": [
+    "Nazimabad (No. 7)"
+   ],
+   "routes": [
+    "route-2",
+    "route-9"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "board-office",
+   "canonical_name": "Board Office",
+   "raw_names": [
+    "Board Office"
+   ],
+   "routes": [
+    "route-2",
+    "route-9"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "hydri",
+   "canonical_name": "Hydri",
+   "raw_names": [
+    "Hydri",
+    "Hydri Stop"
+   ],
+   "routes": [
+    "route-2",
+    "route-9"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "shadman-2",
+   "canonical_name": "Shadman (No. 2)",
+   "raw_names": [
+    "Shadman (No. 2)"
+   ],
+   "routes": [
+    "route-2",
+    "route-14-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "gulshan-chowrangi",
+   "canonical_name": "Gulshan Chowrangi",
+   "raw_names": [
+    "Gulshan Chowrangi"
+   ],
+   "routes": [
+    "route-2",
+    "route-5"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "korangi-5",
+   "canonical_name": "Korangi (No. 5)",
+   "raw_names": [
+    "Korangi (No. 5)",
+    "Korangi No. 5"
+   ],
+   "routes": [
+    "route-4",
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "akhtar-colony",
+   "canonical_name": "Akhtar Colony",
+   "raw_names": [
+    "Akhtar Colony"
+   ],
+   "routes": [
+    "route-4",
+    "route-8"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "nursery",
+   "canonical_name": "Nursery",
+   "raw_names": [
+    "Nursery"
+   ],
+   "routes": [
+    "route-4",
+    "route-8"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "nagan-chowrangi",
+   "canonical_name": "Nagan Chowrangi",
+   "raw_names": [
+    "Nagan Chowrangi"
+   ],
+   "routes": [
+    "route-5",
+    "route-14-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "murghi-khana",
+   "canonical_name": "Murghi Khana",
+   "raw_names": [
+    "Murghi Khana"
+   ],
+   "routes": [
+    "route-6",
+    "route-12"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "malir-15",
+   "canonical_name": "Malir No. 15",
+   "raw_names": [
+    "Malir No. 15",
+    "Malir (No. 15)"
+   ],
+   "routes": [
+    "route-6",
+    "route-15"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "natha-khan",
+   "canonical_name": "Natha Khan",
+   "raw_names": [
+    "Natha Khan"
+   ],
+   "routes": [
+    "route-6",
+    "route-15"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "drig-road",
+   "canonical_name": "Drig Road",
+   "raw_names": [
+    "Drig Road"
+   ],
+   "routes": [
+    "route-6",
+    "route-15"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "qalandarya-chowk",
+   "canonical_name": "Qalandarya Chowk",
+   "raw_names": [
+    "Qalandarya Chowk"
+   ],
+   "routes": [
+    "route-7",
+    "route-13"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "shadman-1",
+   "canonical_name": "Shadman No. 1",
+   "raw_names": [
+    "Shadman No. 1",
+    "Shadman (No. 1)"
+   ],
+   "routes": [
+    "route-7",
+    "route-14-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "buffer-zone",
+   "canonical_name": "Buffer Zone",
+   "raw_names": [
+    "Buffer Zone"
+   ],
+   "routes": [
+    "route-7",
+    "route-14-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "fazal-mill",
+   "canonical_name": "Fazal Mill",
+   "raw_names": [
+    "Fazal Mill"
+   ],
+   "routes": [
+    "route-7",
+    "route-10"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "noorani-kabab",
+   "canonical_name": "Noorani Kabab",
+   "raw_names": [
+    "Noorani Kabab"
+   ],
+   "routes": [
+    "route-8",
+    "route-9"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "lej-campus",
+   "canonical_name": "LEJ Campus",
+   "raw_names": [
+    "LEJ Campus"
+   ],
+   "routes": [
+    "route-8",
+    "route-9"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "16-chowrangi",
+   "canonical_name": "16 No. Chowrangi",
+   "raw_names": [
+    "16 No. Chowrangi",
+    "16-No. Chowrangi"
+   ],
+   "routes": [
+    "route-9",
+    "route-10"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "water-pump",
+   "canonical_name": "Water Pump",
+   "raw_names": [
+    "Water Pump"
+   ],
+   "routes": [
+    "route-9",
+    "route-10"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "gulberg-chowrangi",
+   "canonical_name": "Gulberg Chowrangi",
+   "raw_names": [
+    "Gulberg Chowrangi"
+   ],
+   "routes": [
+    "route-9",
+    "route-10"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "peoples-chowrangi",
+   "canonical_name": "Peoples Chowrangi",
+   "raw_names": [
+    "Peoples Chowrangi"
+   ],
+   "routes": [
+    "route-9",
+    "route-10"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "landi-kotal",
+   "canonical_name": "Landi Kotal",
+   "raw_names": [
+    "Landi Kotal"
+   ],
+   "routes": [
+    "route-10",
+    "route-13"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "kala-board",
+   "canonical_name": "Kala Board",
+   "raw_names": [
+    "Kala Board"
+   ],
+   "routes": [
+    "route-11",
+    "route-15"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "model-colony",
+   "canonical_name": "Model Colony",
+   "raw_names": [
+    "Model Colony"
+   ],
+   "routes": [
+    "route-11",
+    "route-12"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "jama-cloth",
+   "canonical_name": "Jama Cloth",
+   "raw_names": [
+    "Jama Cloth"
+   ],
+   "routes": [
+    "route-1"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "radio-pakistan",
+   "canonical_name": "Radio Pakistan",
+   "raw_names": [
+    "Radio Pakistan"
+   ],
+   "routes": [
+    "route-1"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "7th-day-hospital",
+   "canonical_name": "7th Day Hospital",
+   "raw_names": [
+    "7th Day Hospital"
+   ],
+   "routes": [
+    "route-1"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "gurumandir",
+   "canonical_name": "Gurumandir",
+   "raw_names": [
+    "Gurumandir"
+   ],
+   "routes": [
+    "route-1"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "jamshed-road-3",
+   "canonical_name": "Jamshed Road (No. 3)",
+   "raw_names": [
+    "Jamshed Road (No. 3)"
+   ],
+   "routes": [
+    "route-1"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "new-town",
+   "canonical_name": "New Town",
+   "raw_names": [
+    "New Town"
+   ],
+   "routes": [
+    "route-1"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "askari-park",
+   "canonical_name": "Askari Park",
+   "raw_names": [
+    "Askari Park"
+   ],
+   "routes": [
+    "route-1"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "mumtaz-manzil",
+   "canonical_name": "Mumtaz Manzil",
+   "raw_names": [
+    "Mumtaz Manzil"
+   ],
+   "routes": [
+    "route-1"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "paposh",
+   "canonical_name": "Paposh",
+   "raw_names": [
+    "Paposh"
+   ],
+   "routes": [
+    "route-2"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "namak-bank",
+   "canonical_name": "Namak Bank",
+   "raw_names": [
+    "Namak Bank"
+   ],
+   "routes": [
+    "route-2"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "sohrab-goth",
+   "canonical_name": "Sohrab Goth",
+   "raw_names": [
+    "Sohrab Goth"
+   ],
+   "routes": [
+    "route-2"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "korangi-4",
+   "canonical_name": "Korangi (No. 4)",
+   "raw_names": [
+    "Korangi (No. 4)"
+   ],
+   "routes": [
+    "route-4"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "korangi-31-2",
+   "canonical_name": "Korangi (No. 31/2)",
+   "raw_names": [
+    "Korangi (No. 31/2)"
+   ],
+   "routes": [
+    "route-4"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "korangi-21-2",
+   "canonical_name": "Korangi (No. 21/2)",
+   "raw_names": [
+    "Korangi (No. 21/2)"
+   ],
+   "routes": [
+    "route-4"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "korangi-2",
+   "canonical_name": "Korangi (No. 2)",
+   "raw_names": [
+    "Korangi (No. 2)"
+   ],
+   "routes": [
+    "route-4"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "korangi-1-near-chakra-goth",
+   "canonical_name": "Korangi (No. 1, Near Chakra Goth)",
+   "raw_names": [
+    "Korangi (No. 1, Near Chakra Goth)"
+   ],
+   "routes": [
+    "route-4"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "nasir-jump",
+   "canonical_name": "Nasir Jump",
+   "raw_names": [
+    "Nasir Jump"
+   ],
+   "routes": [
+    "route-4"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "korangi-crossing",
+   "canonical_name": "Korangi Crossing",
+   "raw_names": [
+    "Korangi Crossing"
+   ],
+   "routes": [
+    "route-4"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "qayyumabad-chowrangi",
+   "canonical_name": "Qayyumabad Chowrangi",
+   "raw_names": [
+    "Qayyumabad Chowrangi"
+   ],
+   "routes": [
+    "route-4"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "kala-pull",
+   "canonical_name": "Kala Pull",
+   "raw_names": [
+    "Kala Pull"
+   ],
+   "routes": [
+    "route-4"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "ftc-building",
+   "canonical_name": "FTC Building",
+   "raw_names": [
+    "FTC Building"
+   ],
+   "routes": [
+    "route-4"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "baloch-colony",
+   "canonical_name": "Baloch Colony",
+   "raw_names": [
+    "Baloch Colony"
+   ],
+   "routes": [
+    "route-4"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "karsaz",
+   "canonical_name": "Karsaz",
+   "raw_names": [
+    "Karsaz"
+   ],
+   "routes": [
+    "route-4"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "4k-chowrangi",
+   "canonical_name": "4K Chowrangi",
+   "raw_names": [
+    "4K Chowrangi"
+   ],
+   "routes": [
+    "route-5"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "2-minute-chowrangi",
+   "canonical_name": "2 Minute Chowrangi",
+   "raw_names": [
+    "2 Minute Chowrangi"
+   ],
+   "routes": [
+    "route-5"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "5c-4-bara-market",
+   "canonical_name": "5C-4 (Bara Market)",
+   "raw_names": [
+    "5C-4 (Bara Market)"
+   ],
+   "routes": [
+    "route-5"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "saleem-centre",
+   "canonical_name": "Saleem Centre",
+   "raw_names": [
+    "Saleem Centre"
+   ],
+   "routes": [
+    "route-5"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "u-p-mor",
+   "canonical_name": "U.P Mor",
+   "raw_names": [
+    "U.P Mor"
+   ],
+   "routes": [
+    "route-5"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "shama-shopping-centre",
+   "canonical_name": "Shama Shopping Centre",
+   "raw_names": [
+    "Shama Shopping Centre"
+   ],
+   "routes": [
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "shah-faisal-police-station",
+   "canonical_name": "Shah Faisal Police Station",
+   "raw_names": [
+    "Shah Faisal Police Station"
+   ],
+   "routes": [
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "bagh-e-korangi",
+   "canonical_name": "Bagh-e-Korangi",
+   "raw_names": [
+    "Bagh-e-Korangi"
+   ],
+   "routes": [
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "singer-chowrangi",
+   "canonical_name": "Singer Chowrangi",
+   "raw_names": [
+    "Singer Chowrangi"
+   ],
+   "routes": [
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "khaddi-stop",
+   "canonical_name": "Khaddi Stop",
+   "raw_names": [
+    "Khaddi Stop"
+   ],
+   "routes": [
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "korangi-6",
+   "canonical_name": "Korangi No. 6",
+   "raw_names": [
+    "Korangi No. 6"
+   ],
+   "routes": [
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "landhi-6",
+   "canonical_name": "Landhi No. 6",
+   "raw_names": [
+    "Landhi No. 6"
+   ],
+   "routes": [
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "landhi-5",
+   "canonical_name": "Landhi No. 5",
+   "raw_names": [
+    "Landhi No. 5"
+   ],
+   "routes": [
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "landhi-4",
+   "canonical_name": "Landhi No. 4",
+   "raw_names": [
+    "Landhi No. 4"
+   ],
+   "routes": [
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "landhi-3",
+   "canonical_name": "Landhi No. 3",
+   "raw_names": [
+    "Landhi No. 3"
+   ],
+   "routes": [
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "landhi-1",
+   "canonical_name": "Landhi No. 1",
+   "raw_names": [
+    "Landhi No. 1"
+   ],
+   "routes": [
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "landhi-89",
+   "canonical_name": "Landhi No. 89",
+   "raw_names": [
+    "Landhi No. 89"
+   ],
+   "routes": [
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "dawood-chowrangi",
+   "canonical_name": "Dawood Chowrangi",
+   "raw_names": [
+    "Dawood Chowrangi"
+   ],
+   "routes": [
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "star-gate",
+   "canonical_name": "Star Gate",
+   "raw_names": [
+    "Star Gate"
+   ],
+   "routes": [
+    "route-6"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "islam-chowk",
+   "canonical_name": "Islam Chowk",
+   "raw_names": [
+    "Islam Chowk"
+   ],
+   "routes": [
+    "route-7"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "orangi-5",
+   "canonical_name": "Orangi (No. 5)",
+   "raw_names": [
+    "Orangi (No. 5)"
+   ],
+   "routes": [
+    "route-7"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "metro-cinema",
+   "canonical_name": "Metro Cinema",
+   "raw_names": [
+    "Metro Cinema"
+   ],
+   "routes": [
+    "route-7"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "abdullah-college",
+   "canonical_name": "Abdullah College",
+   "raw_names": [
+    "Abdullah College"
+   ],
+   "routes": [
+    "route-7"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "ship-owner-college",
+   "canonical_name": "Ship Owner College",
+   "raw_names": [
+    "Ship Owner College"
+   ],
+   "routes": [
+    "route-7"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "punjab-chowrangi",
+   "canonical_name": "Punjab Chowrangi",
+   "raw_names": [
+    "Punjab Chowrangi"
+   ],
+   "routes": [
+    "route-8"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "kesc-office",
+   "canonical_name": "KESC Office",
+   "raw_names": [
+    "KESC Office"
+   ],
+   "routes": [
+    "route-8"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "defence-mor",
+   "canonical_name": "Defence Mor",
+   "raw_names": [
+    "Defence Mor"
+   ],
+   "routes": [
+    "route-8"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "express-way",
+   "canonical_name": "Express Way",
+   "raw_names": [
+    "Express Way"
+   ],
+   "routes": [
+    "route-8"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "iqra-university",
+   "canonical_name": "Iqra University",
+   "raw_names": [
+    "Iqra University"
+   ],
+   "routes": [
+    "route-8"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "mehmoodabad-6",
+   "canonical_name": "Mehmoodabad (No. 6)",
+   "raw_names": [
+    "Mehmoodabad (No. 6)"
+   ],
+   "routes": [
+    "route-8"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "baloch-colony-bridge",
+   "canonical_name": "Baloch Colony Bridge",
+   "raw_names": [
+    "Baloch Colony Bridge"
+   ],
+   "routes": [
+    "route-8"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "shahed-e-millat-road",
+   "canonical_name": "Shahed-e-Millat Road",
+   "raw_names": [
+    "Shahed-e-Millat Road"
+   ],
+   "routes": [
+    "route-8"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "agha-khan-hospital",
+   "canonical_name": "Agha Khan Hospital",
+   "raw_names": [
+    "Agha Khan Hospital"
+   ],
+   "routes": [
+    "route-8"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "daalmian",
+   "canonical_name": "Daalmian",
+   "raw_names": [
+    "Daalmian"
+   ],
+   "routes": [
+    "route-8"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "millennium-mall",
+   "canonical_name": "Millennium Mall",
+   "raw_names": [
+    "Millennium Mall"
+   ],
+   "routes": [
+    "route-8"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "laal-flat",
+   "canonical_name": "Laal Flat",
+   "raw_names": [
+    "Laal Flat"
+   ],
+   "routes": [
+    "route-8"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "safari-park",
+   "canonical_name": "Safari Park",
+   "raw_names": [
+    "Safari Park"
+   ],
+   "routes": [
+    "route-9"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "moti-mehel",
+   "canonical_name": "Moti Mehel",
+   "raw_names": [
+    "Moti Mehel"
+   ],
+   "routes": [
+    "route-9"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "baloch-hotel",
+   "canonical_name": "Baloch Hotel",
+   "raw_names": [
+    "Baloch Hotel"
+   ],
+   "routes": [
+    "route-9"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "khalid-bin-waleed-road",
+   "canonical_name": "Khalid Bin Waleed Road",
+   "raw_names": [
+    "Khalid Bin Waleed Road"
+   ],
+   "routes": [
+    "route-9"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "crown-bakery",
+   "canonical_name": "Crown Bakery",
+   "raw_names": [
+    "Crown Bakery"
+   ],
+   "routes": [
+    "route-10"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "dental-college",
+   "canonical_name": "Dental College",
+   "raw_names": [
+    "Dental College"
+   ],
+   "routes": [
+    "route-10"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "d-c-office",
+   "canonical_name": "D.C Office",
+   "raw_names": [
+    "D.C Office"
+   ],
+   "routes": [
+    "route-10"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "laal-masjid",
+   "canonical_name": "Laal Masjid",
+   "raw_names": [
+    "Laal Masjid"
+   ],
+   "routes": [
+    "route-11"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "malir-tanki",
+   "canonical_name": "Malir Tanki",
+   "raw_names": [
+    "Malir Tanki"
+   ],
+   "routes": [
+    "route-11"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "r-c-d-ground",
+   "canonical_name": "R.C.D Ground",
+   "raw_names": [
+    "R.C.D Ground"
+   ],
+   "routes": [
+    "route-11"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "model-mor-cng-pump",
+   "canonical_name": "Model Mor (CNG Pump)",
+   "raw_names": [
+    "Model Mor (CNG Pump)"
+   ],
+   "routes": [
+    "route-11"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "malir-cantt",
+   "canonical_name": "Malir Cantt",
+   "raw_names": [
+    "Malir Cantt"
+   ],
+   "routes": [
+    "route-11"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "e-complex",
+   "canonical_name": "E-Complex",
+   "raw_names": [
+    "E-Complex"
+   ],
+   "routes": [
+    "route-12"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "steel-town-gate",
+   "canonical_name": "Steel Town Gate",
+   "raw_names": [
+    "Steel Town Gate"
+   ],
+   "routes": [
+    "route-12"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "national-highway",
+   "canonical_name": "National Highway",
+   "raw_names": [
+    "National Highway"
+   ],
+   "routes": [
+    "route-12"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "qaidabad",
+   "canonical_name": "Qaidabad",
+   "raw_names": [
+    "Qaidabad"
+   ],
+   "routes": [
+    "route-12"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "cantt-gate-5",
+   "canonical_name": "Cantt Gate (No. 5)",
+   "raw_names": [
+    "Cantt Gate (No. 5)"
+   ],
+   "routes": [
+    "route-12"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "safoora-chowrangi",
+   "canonical_name": "Safoora Chowrangi",
+   "raw_names": [
+    "Safoora Chowrangi"
+   ],
+   "routes": [
+    "route-12"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "ajmer-nagri",
+   "canonical_name": "Ajmer Nagri",
+   "raw_names": [
+    "Ajmer Nagri"
+   ],
+   "routes": [
+    "route-13"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "bara-dari",
+   "canonical_name": "Bara Dari",
+   "raw_names": [
+    "Bara Dari"
+   ],
+   "routes": [
+    "route-13"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "disco-mor",
+   "canonical_name": "Disco Mor",
+   "raw_names": [
+    "Disco Mor"
+   ],
+   "routes": [
+    "route-13"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "muhammad-shah-kabrustan",
+   "canonical_name": "Muhammad Shah Kabrustan",
+   "raw_names": [
+    "Muhammad Shah Kabrustan"
+   ],
+   "routes": [
+    "route-13"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "anda-mor",
+   "canonical_name": "Anda Mor",
+   "raw_names": [
+    "Anda Mor"
+   ],
+   "routes": [
+    "route-13"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "ship-owner",
+   "canonical_name": "Ship Owner",
+   "raw_names": [
+    "Ship Owner"
+   ],
+   "routes": [
+    "route-13"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "tahir-villa",
+   "canonical_name": "Tahir Villa",
+   "raw_names": [
+    "Tahir Villa"
+   ],
+   "routes": [
+    "route-13"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "k-d-a-chowrangi",
+   "canonical_name": "K.D.A Chowrangi",
+   "raw_names": [
+    "K.D.A Chowrangi"
+   ],
+   "routes": [
+    "route-14-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "nazimabad-6",
+   "canonical_name": "Nazimabad (No. 6)",
+   "raw_names": [
+    "Nazimabad (No. 6)"
+   ],
+   "routes": [
+    "route-14-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "golimar-chowrangi",
+   "canonical_name": "Golimar Chowrangi",
+   "raw_names": [
+    "Golimar Chowrangi"
+   ],
+   "routes": [
+    "route-14-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "dak-khana",
+   "canonical_name": "Dak Khana",
+   "raw_names": [
+    "Dak Khana"
+   ],
+   "routes": [
+    "route-14-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "bakra-peri",
+   "canonical_name": "Bakra Peri",
+   "raw_names": [
+    "Bakra Peri"
+   ],
+   "routes": [
+    "route-15"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "memon-goth",
+   "canonical_name": "Memon Goth",
+   "raw_names": [
+    "Memon Goth"
+   ],
+   "routes": [
+    "route-15"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "khokhrapar",
+   "canonical_name": "Khokhrapar",
+   "raw_names": [
+    "Khokhrapar"
+   ],
+   "routes": [
+    "route-15"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "saudabad",
+   "canonical_name": "Saudabad",
+   "raw_names": [
+    "Saudabad"
+   ],
+   "routes": [
+    "route-15"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "jinnah-squire",
+   "canonical_name": "Jinnah Squire",
+   "raw_names": [
+    "Jinnah Squire"
+   ],
+   "routes": [
+    "route-15"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "nad-e-ali",
+   "canonical_name": "Nad-e-Ali",
+   "raw_names": [
+    "Nad-e-Ali"
+   ],
+   "routes": [
+    "route-15"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "wireless-gate",
+   "canonical_name": "Wireless Gate",
+   "raw_names": [
+    "Wireless Gate"
+   ],
+   "routes": [
+    "route-15"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "lea-market",
+   "canonical_name": "Lea Market",
+   "raw_names": [
+    "Lea Market"
+   ],
+   "routes": [
+    "route-16"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "lawrence-road",
+   "canonical_name": "Lawrence Road",
+   "raw_names": [
+    "Lawrence Road"
+   ],
+   "routes": [
+    "route-16"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "garden",
+   "canonical_name": "Garden",
+   "raw_names": [
+    "Garden"
+   ],
+   "routes": [
+    "route-16"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "lasbela",
+   "canonical_name": "Lasbela",
+   "raw_names": [
+    "Lasbela"
+   ],
+   "routes": [
+    "route-16"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "teen-hatti",
+   "canonical_name": "Teen Hatti",
+   "raw_names": [
+    "Teen Hatti"
+   ],
+   "routes": [
+    "route-16"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "jail-road",
+   "canonical_name": "Jail Road",
+   "raw_names": [
+    "Jail Road"
+   ],
+   "routes": [
+    "route-16"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "urdu-university",
+   "canonical_name": "Urdu University",
+   "raw_names": [
+    "Urdu University"
+   ],
+   "routes": [
+    "route-16"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "naval-colony",
+   "canonical_name": "Naval Colony",
+   "raw_names": [
+    "Naval Colony"
+   ],
+   "routes": [
+    "route-17-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "shersha",
+   "canonical_name": "Shersha",
+   "raw_names": [
+    "Shersha"
+   ],
+   "routes": [
+    "route-17-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "ghani-chowrangi",
+   "canonical_name": "Ghani Chowrangi",
+   "raw_names": [
+    "Ghani Chowrangi"
+   ],
+   "routes": [
+    "route-17-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "habib-bank-bridge-crossing",
+   "canonical_name": "Habib Bank (Bridge Crossing)",
+   "raw_names": [
+    "Habib Bank (Bridge Crossing)"
+   ],
+   "routes": [
+    "route-17-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "nazimabad-4",
+   "canonical_name": "Nazimabad (No. 4)",
+   "raw_names": [
+    "Nazimabad (No. 4)"
+   ],
+   "routes": [
+    "route-17-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "ayesha-manzil",
+   "canonical_name": "Ayesha Manzil",
+   "raw_names": [
+    "Ayesha Manzil"
+   ],
+   "routes": [
+    "route-17-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "mukka-chowk",
+   "canonical_name": "Mukka Chowk",
+   "raw_names": [
+    "Mukka Chowk"
+   ],
+   "routes": [
+    "route-17-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "13-d",
+   "canonical_name": "13-D",
+   "raw_names": [
+    "13-D"
+   ],
+   "routes": [
+    "route-17-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  },
+  {
+   "id": "maskan-chowrangi",
+   "canonical_name": "Maskan Chowrangi",
+   "raw_names": [
+    "Maskan Chowrangi"
+   ],
+   "routes": [
+    "route-17-3"
+   ],
+   "alias_status": "auto-normalised, needs human check"
+  }
+ ]
+}
