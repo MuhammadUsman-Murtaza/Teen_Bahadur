@@ -35,6 +35,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                     'nav-link' + (isActive ? ' nav-link-active' : '')
                   }
                 >
+                <NavLink to="/journey" className={({ isActive }) => 'nav-link' + (isActive ? ' nav-link-active' : '')}> Journey </NavLink>
                   Profile
                 </NavLink>
                 <button className="button secondary" onClick={handleLogout}>

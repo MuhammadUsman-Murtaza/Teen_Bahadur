@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage';
 import OnboardingPage from './pages/OnboardingPage';
 import ProfilePage from './pages/ProfilePage';
 import AppHomePage from './pages/AppHomePage';
+import JourneyPage from './pages/JourneyPage';
 import { useAuth } from './modules/auth/AuthContext';
 import { useProfile } from './modules/profile/hooks';
 
@@ -61,6 +62,7 @@ const App: React.FC = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="/journey" element={<ProtectedRoute><JourneyPage /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>
